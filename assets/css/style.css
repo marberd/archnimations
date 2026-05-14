@@ -289,81 +289,58 @@ body.menu-open #burger span:nth-child(3) { transform: translateY(-7px) rotate(-4
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
-/* interactive Spline scene in the hero */
+/* interactive Spline scene — full-bleed, takes over the hero */
 .hero__spline {
   position: absolute;
-  top: 0; right: 0;
-  width: 60%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
   /* fallback shown while the scene loads / if it fails */
   background:
-    radial-gradient(circle at 60% 45%, rgba(139,92,246,0.22), transparent 60%),
-    radial-gradient(circle at 75% 70%, rgba(6,182,212,0.18), transparent 55%);
+    radial-gradient(circle at 50% 42%, rgba(139,92,246,0.16), transparent 62%),
+    radial-gradient(circle at 70% 78%, rgba(6,182,212,0.14), transparent 58%);
 }
 .hero__spline iframe {
   width: 100%;
   height: 100%;
   display: block;
 }
-/* blend the scene's left edge into the page; pointer-transparent so
-   the scene stays fully interactive */
-.hero__spline::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+/* the single hero line sits over the scene; pointer-events pass
+   through so the 3D scene stays fully interactive */
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
   pointer-events: none;
-  background: linear-gradient(to right, var(--bg) 0%, transparent 24%);
+  text-align: center;
 }
-.hero .orb--glow {
-  width: 520px; height: 520px;
-  right: 1vw; top: 50%;
-  margin-top: -260px;
-}
-/* pointer-events pass through empty hero text area to the scene;
-   only the actual links/buttons stay clickable */
-.hero__inner { position: relative; z-index: 3; width: 100%; pointer-events: none; }
-.hero__inner a, .hero__inner .btn { pointer-events: auto; }
 .hero h1 {
-  font-size: clamp(2.8rem, 7vw, 6rem);
-  margin: 22px 0 26px;
-  max-width: 15ch;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+  text-shadow: 0 2px 44px rgba(246,246,250,0.95), 0 0 14px rgba(246,246,250,0.85);
 }
-.hero h1 em {
-  font-style: normal;
+.rotator {
+  display: inline-block;
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  transition: opacity 0.38s var(--ease), transform 0.38s var(--ease);
 }
-.hero__lead {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  color: var(--text-mid);
-  max-width: 46ch;
-  margin-bottom: 40px;
-}
-.hero__cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.rotator--out { opacity: 0; transform: translateY(-0.32em); }
 .hero__scroll {
   position: absolute;
   bottom: 34px; left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.hero__scroll::after {
-  content: '';
-  width: 1px; height: 38px;
-  background: linear-gradient(var(--iris-3), transparent);
+  pointer-events: none;
+  width: 1px; height: 44px;
+  background: linear-gradient(var(--iris-2), transparent);
 }
 
 /* ── SECTION SCAFFOLD ─────────────────────────────── */
@@ -736,11 +713,6 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   .split, .split--rev .split__media, .contact-grid, .form-row { grid-template-columns: 1fr; }
   .split { gap: 36px; }
   .split--rev .split__media { order: 0; }
-  .hero__spline { width: 100%; opacity: 0.6; }
-  .hero__spline::before {
-    background: linear-gradient(to bottom, var(--bg) 0%, transparent 30%, transparent 60%, var(--bg) 100%);
-  }
-  .hero .orb--glow { width: 320px; height: 320px; }
 }
 @media (max-width: 560px) {
   .wrap, #nav { padding-left: 20px; padding-right: 20px; }
@@ -750,7 +722,6 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   .stat { border-right: 0; border-bottom: 1px solid var(--line); }
   .stat:last-child { border-bottom: 0; }
   .cta-band .wrap { padding: 60px 24px; }
-  .hero .orb--glow { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

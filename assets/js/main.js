@@ -40,6 +40,21 @@ if (intro && document.documentElement.classList.contains('intro-pending')) {
   }, 2900);
 }
 
+// ─── HERO WORD ROTATOR ───────────────────────────────
+const rotator = document.querySelector('.rotator');
+if (rotator) {
+  const words = ['visualization', 'design', 'rendering', 'animation'];
+  let ri = 0;
+  setInterval(() => {
+    rotator.classList.add('rotator--out');
+    setTimeout(() => {
+      ri = (ri + 1) % words.length;
+      rotator.textContent = words[ri];
+      rotator.classList.remove('rotator--out');
+    }, 380);
+  }, 2600);
+}
+
 // ─── NAV: scrolled state + mobile menu ───────────────
 const nav = document.getElementById('nav');
 const burger = document.getElementById('burger');
