@@ -1,12 +1,43 @@
 // ─── INTRO ENTRANCE ──────────────────────────────────
 const intro = document.getElementById('intro');
-if (intro && !document.documentElement.classList.contains('intro-done')) {
+if (intro && document.documentElement.classList.contains('intro-pending')) {
   sessionStorage.setItem('introSeen', '1');
   document.body.style.overflow = 'hidden';
+  const introLogo = intro.querySelector('.intro__logo');
+  const introGlow = intro.querySelector('.intro__glow');
+  const navLogo = document.querySelector('#nav .brand img');
+
+  // after the reveal + hold, fly the logo up into the nav's center slot
   setTimeout(() => {
-    document.body.style.overflow = '';
-    intro.remove();
-  }, 3000);
+    const from = introLogo.getBoundingClientRect();
+    const to = navLogo.getBoundingClientRect();
+    const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
+    const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+    const scale = to.width / from.width;
+
+    // drop the keyframe animation, pin to its settled state, then transition
+    introLogo.style.animation = 'none';
+    introLogo.style.opacity = '1';
+    introLogo.style.transform = 'none';
+    void introLogo.offsetWidth;
+    introLogo.style.transition = 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+    introLogo.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+
+    if (introGlow) {
+      introGlow.style.transition = 'opacity 0.6s ease';
+      introGlow.style.opacity = '0';
+    }
+    intro.style.transition = 'background-color 0.8s ease 0.15s';
+    intro.style.backgroundColor = 'transparent';
+    intro.style.pointerEvents = 'none';
+
+    // logo has landed — reveal the real nav logo and clean up
+    setTimeout(() => {
+      document.documentElement.classList.remove('intro-pending');
+      document.body.style.overflow = '';
+      intro.remove();
+    }, 1050);
+  }, 2900);
 }
 
 // ─── NAV: scrolled state + mobile menu ───────────────

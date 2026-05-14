@@ -15,13 +15,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 <script>
-  // skip the intro on repeat visits / reduced motion — before paint, no flash
+  // decide intro state before paint — avoids a flash of the intro or nav logo
   try {
-    if (sessionStorage.getItem('introSeen') ||
-        matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('intro-done');
-    }
-  } catch (e) {}
+    var done = sessionStorage.getItem('introSeen') ||
+               matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.add(done ? 'intro-done' : 'intro-pending');
+  } catch (e) {
+    document.documentElement.classList.add('intro-done');
+  }
 </script>
 </head>
 <body>
@@ -33,7 +34,7 @@
 </div>
 
 <nav id="nav">
-  <a class="brand" href="/">ARCH<b>NIMATIONS</b></a>
+  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693"></a>
   <div class="nav-links">
     <a href="/" class="active">Home</a>
     <a href="/about/">About</a>
