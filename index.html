@@ -14,8 +14,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
+<script>
+  // skip the intro on repeat visits / reduced motion — before paint, no flash
+  try {
+    if (sessionStorage.getItem('introSeen') ||
+        matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('intro-done');
+    }
+  } catch (e) {}
+</script>
 </head>
 <body>
+
+<!-- ── INTRO ENTRANCE ───────────────────────────── -->
+<div id="intro" aria-hidden="true">
+  <div class="intro__glow"></div>
+  <img class="intro__logo" src="/assets/images/logo.png" alt="Archnimations" width="975" height="693">
+</div>
 
 <nav id="nav">
   <a class="brand" href="/">ARCH<b>NIMATIONS</b></a>

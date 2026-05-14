@@ -1,3 +1,14 @@
+// ─── INTRO ENTRANCE ──────────────────────────────────
+const intro = document.getElementById('intro');
+if (intro && !document.documentElement.classList.contains('intro-done')) {
+  sessionStorage.setItem('introSeen', '1');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    document.body.style.overflow = '';
+    intro.remove();
+  }, 3000);
+}
+
 // ─── NAV: scrolled state + mobile menu ───────────────
 const nav = document.getElementById('nav');
 const burger = document.getElementById('burger');

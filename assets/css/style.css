@@ -64,6 +64,53 @@ body::after {
 @keyframes drift1 { to { transform: translate(-8vw, 10vw) scale(1.18); } }
 @keyframes drift2 { to { transform: translate(10vw, -8vw) scale(1.22); } }
 
+/* ── INTRO ENTRANCE ───────────────────────────────── */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  overflow: hidden;
+  animation: introOut 0.85s var(--ease) 2s forwards;
+}
+html.intro-done #intro { display: none; }
+.intro__logo {
+  position: relative;
+  z-index: 2;
+  width: min(380px, 64vw);
+  height: auto;
+  opacity: 0;
+  transform: scale(0.86) translateY(10px);
+  animation: introLogo 1.15s var(--ease) 0.15s forwards;
+}
+.intro__glow {
+  position: absolute;
+  width: 540px; height: 540px;
+  max-width: 90vw; max-height: 90vw;
+  border-radius: 50%;
+  background: var(--grad);
+  filter: blur(95px);
+  opacity: 0;
+  transform: scale(0.6);
+  animation: introGlow 2.1s var(--ease) 0.2s forwards;
+}
+@keyframes introLogo {
+  0%   { opacity: 0; transform: scale(0.86) translateY(10px); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes introGlow {
+  0%   { opacity: 0; transform: scale(0.6); }
+  45%  { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0.34; transform: scale(1.16); }
+}
+@keyframes introOut {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
 h1, h2, h3, h4 {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 600;
@@ -691,4 +738,5 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
 
 @media (prefers-reduced-motion: reduce) {
   *, body::before, body::after { animation: none !important; }
+  #intro { display: none !important; }
 }
