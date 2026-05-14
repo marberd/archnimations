@@ -18,6 +18,7 @@ if (burger) {
 }
 
 // ─── SCROLL REVEAL ───────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -25,11 +26,22 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach((el, i) => {
+}, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+revealEls.forEach((el, i) => {
   el.style.transitionDelay = (i % 3) * 0.08 + 's';
   io.observe(el);
 });
+// Failsafe: never leave in-viewport content hidden if the observer
+// hasn't fired (slow JS, headless capture, IO quirks).
+const sweep = () => {
+  revealEls.forEach(el => {
+    if (el.classList.contains('in')) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('in');
+    }
+  });
+};
+window.addEventListener('load', () => setTimeout(sweep, 250));
 
 // ─── WORK GALLERY: category filter ───────────────────
 const catBtns = document.querySelectorAll('.cat-btn');
