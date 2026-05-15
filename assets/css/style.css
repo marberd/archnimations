@@ -277,10 +277,7 @@ body.menu-open #burger span:nth-child(3) { transform: translateY(-7px) rotate(-4
 }
 .rotator {
   display: inline-block;
-  background: var(--iris);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
   transition: opacity 0.38s var(--ease), transform 0.38s var(--ease);
 }
 .rotator--out { opacity: 0; transform: translateY(-0.3em); }
