@@ -391,6 +391,11 @@ section { position: relative; z-index: 1; }
 .section-head { max-width: 62ch; margin-bottom: 60px; }
 .section-head h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 16px 0 0; }
 .section-head p { color: var(--text-mid); margin-top: 20px; font-size: 1.08rem; }
+.work-page.section-pad { padding-bottom: 72px; }
+.work-page .section-head { margin-bottom: 34px; }
+.work-page .section-head h2 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); }
+.work-page .section-head p { margin-top: 14px; }
+.work-page + .cta-band { padding-top: 42px; }
 
 /* inner-page header gets a soft orb */
 .page-head { position: relative; overflow: hidden; }
@@ -470,6 +475,7 @@ section { position: relative; z-index: 1; }
 
 /* ── WORK / GALLERY GRID ──────────────────────────── */
 .cat-nav { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+.work-page .cat-nav { margin-bottom: 28px; }
 .cat-btn {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
@@ -495,7 +501,7 @@ section { position: relative; z-index: 1; }
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 16px;
-  margin-bottom: 56px;
+  margin-bottom: 36px;
   align-items: start;
 }
 .package-card {
@@ -513,9 +519,7 @@ section { position: relative; z-index: 1; }
   grid-column: span 4;
   transition: transform 0.5s var(--ease), box-shadow 0.4s, border-color 0.4s;
 }
-.package-card[open] {
-  grid-column: 1 / -1;
-}
+.package-card[open] { grid-column: 1 / -1; }
 .package-card::before {
   content: var(--project-no);
   position: absolute;
@@ -545,7 +549,7 @@ section { position: relative; z-index: 1; }
 .package-card__summary {
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 100%;
+  min-height: 0;
   cursor: pointer;
   list-style: none;
 }
@@ -625,8 +629,8 @@ section { position: relative; z-index: 1; }
   background: var(--grad);
   box-shadow: 0 10px 24px rgba(139,92,246,0.22);
 }
-.package-card__toggle::after { content: ' +'; }
-.package-card[open] .package-card__toggle::after { content: ' -'; }
+.package-card__toggle::after { content: ''; }
+.package-card[open] .package-card__toggle::after { content: ''; }
 .package-card__details {
   padding: 22px;
   background:
