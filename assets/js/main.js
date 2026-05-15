@@ -144,12 +144,6 @@ if (lb) {
       const vis = collectVisible();
       show(vis.indexOf(s));
     });
-    s.addEventListener('keydown', e => {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      e.preventDefault();
-      const vis = collectVisible();
-      show(vis.indexOf(s));
-    });
   });
   lb.querySelector('.lb-close').addEventListener('click', hide);
   lb.querySelector('.lb-nav.prev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
@@ -160,30 +154,6 @@ if (lb) {
     if (e.key === 'Escape') hide();
     if (e.key === 'ArrowLeft') show(idx - 1);
     if (e.key === 'ArrowRight') show(idx + 1);
-  });
-}
-
-// ─── STATIC CONTACT FORM ─────────────────────────────
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const data = new FormData(contactForm);
-    const name = data.get('name') || '';
-    const email = data.get('email') || '';
-    const projectType = data.get('subject') || 'Project inquiry';
-    const message = data.get('message') || '';
-    const subject = `Archnimations inquiry: ${projectType}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Project type: ${projectType}`,
-      '',
-      message
-    ].join('\n');
-
-    window.location.href =
-      `mailto:info@archnimations.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 
