@@ -34,7 +34,9 @@
   --s-1: 0.5rem;  --s-2: 0.875rem; --s-3: 1.25rem;
   --s-4: 2rem;    --s-5: 3.25rem;  --s-6: 5.5rem;  --s-7: 9rem;
 
-  --font: "Giveny", serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font: var(--font-body);
   --max: 1240px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -53,14 +55,15 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 600;
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 .display {
+  font-family: var(--font-display);
   font-weight: 800;
-  font-stretch: 125%;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.02;
 }
 
@@ -134,7 +137,7 @@ html.intro-pending #nav .brand img { opacity: 0; }
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  font-family: var(--font);
+  font-family: var(--font-body);
   font-weight: 650;
   font-size: 0.95rem;
   letter-spacing: -0.01em;
@@ -267,10 +270,9 @@ body.menu-open #burger span:nth-child(3) { transform: translateY(-7px) rotate(-4
   text-align: center;
 }
 .hero h1 {
-  font-weight: 800;
-  font-stretch: 118%;
-  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  font-size: clamp(2.25rem, 5.2vw, 4.7rem);
+  letter-spacing: 0;
   color: var(--ink);
 }
 .rotator {
@@ -296,10 +298,9 @@ section { position: relative; }
 .section--sunk { background: var(--bg-sunk); }
 .section-head { max-width: 30ch; margin-bottom: var(--s-5); }
 .section-head h2 {
-  font-weight: 800;
-  font-stretch: 115%;
-  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: 0;
 }
 .section-head p {
   color: var(--ink-soft);
@@ -329,11 +330,11 @@ section { position: relative; }
 }
 .proof__item { display: flex; align-items: baseline; gap: 0.5rem; }
 .proof__num {
-  font-weight: 800;
-  font-stretch: 110%;
+  font-family: var(--font-display);
+  font-weight: 600;
   font-size: 1.5rem;
   color: var(--ink);
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 .proof__label { color: var(--ink-soft); font-size: 0.95rem; }
 
@@ -355,10 +356,10 @@ section { position: relative; }
   font-variant-numeric: tabular-nums;
 }
 .service__name {
-  font-weight: 750;
-  font-stretch: 108%;
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.45rem, 2.35vw, 2rem);
+  letter-spacing: 0;
 }
 .service__desc { color: var(--ink-soft); margin-top: 0.4rem; max-width: 56ch; }
 .service__tag {
@@ -388,7 +389,7 @@ section { position: relative; }
 /* ── WORK GALLERY ─────────────────────────────────── */
 .cat-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: var(--s-4); }
 .cat-btn {
-  font-family: var(--font);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
@@ -491,9 +492,8 @@ section { position: relative; }
 }
 .split__media img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
 .split__body h2 {
-  font-weight: 800;
-  font-stretch: 112%;
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   margin-bottom: var(--s-3);
 }
 .split__body p { color: var(--ink-soft); margin-bottom: var(--s-2); }
@@ -524,9 +524,8 @@ section { position: relative; }
   margin: 0 auto;
 }
 .cta-band h2 {
-  font-weight: 800;
-  font-stretch: 116%;
-  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.3rem);
   margin-bottom: var(--s-3);
 }
 .cta-band p { color: var(--ink-soft); margin-bottom: var(--s-4); font-size: 1.05rem; }
@@ -539,10 +538,10 @@ section { position: relative; }
 }
 .contact-block .kicker { margin-bottom: 0.5rem; }
 .contact-block a.big {
-  font-weight: 750;
-  font-stretch: 106%;
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.25vw, 1.9rem);
+  letter-spacing: 0;
   color: var(--ink);
   transition: color 0.2s;
   word-break: break-word;
@@ -601,10 +600,10 @@ footer { border-top: 1px solid var(--line); padding: var(--s-5) 0 var(--s-4); }
   margin-bottom: var(--s-4);
 }
 .foot-brand {
-  font-weight: 800;
-  font-stretch: 120%;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0;
 }
 .foot-tag { color: var(--ink-soft); max-width: 34ch; margin-top: 0.5rem; font-size: 0.95rem; }
 .foot-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
