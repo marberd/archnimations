@@ -100,6 +100,37 @@ const sweep = () => {
 };
 window.addEventListener('load', () => setTimeout(sweep, 250));
 
+// ─── COUNT-UP METRICS ───────────────────────────────
+const countEls = document.querySelectorAll('.js-count');
+const animateCount = (el) => {
+  if (el.dataset.done) return;
+  el.dataset.done = '1';
+  const target = Number(el.dataset.count || 0);
+  const suffix = el.dataset.suffix || '';
+  const start = performance.now();
+  const duration = 1400;
+
+  const tick = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+
+  requestAnimationFrame(tick);
+};
+
+if (countEls.length) {
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateCount(entry.target);
+      countObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.55 });
+  countEls.forEach(el => countObserver.observe(el));
+}
+
 // ─── WORK GALLERY: category filter ───────────────────
 const catBtns = document.querySelectorAll('.cat-btn');
 const shots = document.querySelectorAll('.shot');

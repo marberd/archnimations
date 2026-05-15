@@ -397,6 +397,58 @@ section { position: relative; z-index: 1; }
 .work-page .section-head p { margin-top: 14px; }
 .work-page + .cta-band { padding-top: 42px; }
 
+/* ── LANDING METRICS ─────────────────────────────── */
+.metric-strip {
+  margin-top: -72px;
+  padding: 0 0 92px;
+  pointer-events: none;
+}
+.metric-grid {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.metric-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.70);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+.metric-card::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: var(--grad);
+}
+.metric-card__num {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+.metric-card__label {
+  display: block;
+  margin-top: 10px;
+  color: var(--text-mid);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 /* inner-page header gets a soft orb */
 .page-head { position: relative; overflow: hidden; }
 .page-head .orb--glow {
@@ -874,6 +926,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   #nav .brand img { height: 38px; }
   #nav.scrolled .brand img { height: 34px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .metric-strip { margin-top: -54px; padding-bottom: 70px; }
   .stat:nth-child(2) { border-right: 0; }
   .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
   .cards { grid-template-columns: 1fr; }
@@ -892,6 +945,8 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
 @media (max-width: 560px) {
   .wrap, #nav { padding-left: 20px; padding-right: 20px; }
   .section-pad { padding: 80px 0; }
+  .metric-grid { grid-template-columns: 1fr; }
+  .metric-strip { margin-top: -42px; padding-bottom: 56px; }
   .gallery { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; }
   .stat { border-right: 0; border-bottom: 1px solid var(--line); }
