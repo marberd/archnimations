@@ -388,6 +388,7 @@ body.menu-open #burger span:nth-child(3) { transform: translateY(-7px) rotate(-4
 /* ── SECTION SCAFFOLD ─────────────────────────────── */
 section { position: relative; z-index: 1; }
 .section-pad { padding: 120px 0; }
+.section-pad--flush { padding-top: 0; }
 .section-head { max-width: 62ch; margin-bottom: 60px; }
 .section-head h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 16px 0 0; }
 .section-head p { color: var(--text-mid); margin-top: 20px; font-size: 1.08rem; }
@@ -451,6 +452,8 @@ section { position: relative; z-index: 1; }
 
 /* inner-page header gets a soft orb */
 .page-head { position: relative; overflow: hidden; }
+.page-head--tall { padding-top: 160px; }
+.page-head--work { padding-top: 132px; }
 .page-head .orb--glow {
   width: 420px; height: 420px;
   top: -120px; right: -60px;
@@ -524,6 +527,16 @@ section { position: relative; z-index: 1; }
 }
 .card h3 { font-size: 1.4rem; margin: 18px 0 12px; }
 .card p { color: var(--text-mid); font-size: 0.96rem; }
+.card--prompt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  border-style: dashed;
+}
+.card--prompt h3 { margin-top: 0; }
+.text-link { color: var(--iris-2); }
+.btn--spaced { margin-top: 10px; }
 
 /* ── WORK / GALLERY GRID ──────────────────────────── */
 .cat-nav { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
@@ -768,6 +781,11 @@ section { position: relative; z-index: 1; }
 .split__media img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
 .split__body h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin: 16px 0 20px; }
 .split__body p { color: var(--text-mid); margin-bottom: 16px; }
+.studio-statement {
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+}
 
 /* ── CHECK LIST ───────────────────────────────────── */
 .ticks { list-style: none; margin-top: 8px; }
@@ -832,7 +850,11 @@ section { position: relative; z-index: 1; }
   color: transparent;
 }
 .contact-card p { color: var(--text-mid); }
+.contact-note { margin-top: 14px; }
+.contact-note--loose { margin-top: 18px; }
+.message-card { margin-top: 24px; }
 .socials { display: flex; gap: 14px; margin-top: 8px; }
+.socials--spaced { margin-top: 14px; }
 .socials a {
   width: 46px; height: 46px;
   border: 1px solid var(--line-2);
@@ -853,6 +875,7 @@ section { position: relative; z-index: 1; }
 .socials svg { width: 20px; height: 20px; }
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-form { margin-top: 20px; }
 .field { margin-bottom: 16px; }
 .field label {
   display: block;

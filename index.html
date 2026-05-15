@@ -3,46 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://archnimations.com data:; frame-src https://my.spline.design; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Archnimations, architectural visualization, rendering, animation and Revit consulting. Let us render your vision.">
 <link rel="canonical" href="https://archnimations.com/">
 <title>Archnimations — Architectural Visualization & Animation Studio</title>
 <meta property="og:title" content="Archnimations — Architectural Visualization & Animation Studio">
 <meta property="og:description" content="Detailed renderings, animation and Revit consulting. Let us render your vision.">
-<meta property="og:image" content="https://archnimations.com/assets/images/work/alpena-night.jpg">
+<meta property="og:image" content="https://archnimations.com/assets/images/work/alpena-night.webp">
 <meta property="og:url" content="https://archnimations.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<script>
-  // decide intro state before paint — avoids a flash of the intro or nav logo
-  try {
-    var done = sessionStorage.getItem('introSeen') ||
-               matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.documentElement.classList.add(done ? 'intro-done' : 'intro-pending');
-  } catch (e) {
-    document.documentElement.classList.add('intro-done');
-  }
-</script>
+<script src="/assets/js/intro-state.js"></script>
 </head>
 <body class="home-page">
 
 <!-- ── INTRO ENTRANCE ───────────────────────────── -->
 <div id="intro" aria-hidden="true">
   <div class="intro__glow"></div>
-  <img class="intro__logo" src="/assets/images/logo.png" alt="Archnimations" width="975" height="693">
+  <img class="intro__logo" src="/assets/images/logo.png" alt="Archnimations" width="975" height="693" decoding="async">
 </div>
 
 <nav id="nav">
-  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693"></a>
-  <div class="nav-links">
+  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693" decoding="async"></a>
+  <div class="nav-links" id="primary-navigation">
     <a href="/" class="active">Home</a>
     <a href="/about/">About</a>
     <a href="/work/">Work</a>
     <a href="/revit/">Revit</a>
     <a href="/contact/" class="btn btn--solid">Start a project</a>
   </div>
-  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ── HERO ─────────────────────────────────────── -->
@@ -50,7 +43,9 @@
   <div class="hero__spline">
     <iframe src="https://my.spline.design/bancomar-vtM50TF9JVC6d8I8mIvwW248/"
             title="Archnimations interactive 3D scene"
-            frameborder="0" loading="eager"></iframe>
+            frameborder="0" loading="eager"
+            referrerpolicy="strict-origin-when-cross-origin"
+            sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-popups"></iframe>
   </div>
   <div class="hero__inner wrap">
     <h1>Architectural <span class="rotator">visualization</span> Studio</h1>
@@ -75,7 +70,7 @@
 </section>
 
 <!-- ── SERVICES ─────────────────────────────────── -->
-<section class="section-pad" style="padding-top:0;">
+<section class="section-pad section-pad--flush">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">What we do</span>
@@ -108,27 +103,27 @@
         <h3>Revit Drafting &amp; Design</h3>
         <p>BIM drafting and Revit consulting — industry-standard models, 2D-to-3D conversion and high-quality CD sets.</p>
       </div>
-      <div class="card reveal" style="display:flex;flex-direction:column;justify-content:center;background:transparent;border-style:dashed;">
-        <h3 style="margin-top:0;">Have something else in mind?</h3>
-        <p>Our solutions are tailored to your needs. <a href="/contact/" style="color:var(--accent);">Tell us about your project ↗</a></p>
+      <div class="card card--prompt reveal">
+        <h3>Have something else in mind?</h3>
+        <p>Our solutions are tailored to your needs. <a href="/contact/" class="text-link">Tell us about your project ↗</a></p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ── FEATURED WORK ────────────────────────────── -->
-<section class="section-pad" style="padding-top:0;">
+<section class="section-pad section-pad--flush">
   <div class="wrap">
     <div class="split reveal">
       <div class="split__media">
-        <img src="/assets/images/work/burton-in99-main.webp" alt="BURTON IN99 flagship retail concept, Chengdu">
+        <img src="/assets/images/work/burton-in99-main.webp" alt="BURTON IN99 flagship retail concept, Chengdu" decoding="async" loading="lazy">
       </div>
       <div class="split__body">
         <span class="eyebrow">Selected work</span>
         <h2>From concept render to construction set.</h2>
         <p>Residential developments in the Dominican Republic, a 130,000 SF mixed-use project in Michigan, retail concepts in China — we deliver across scales and geographies.</p>
         <p>Every project gets the same treatment: we go the extra mile to understand the vision, then render it without compromise.</p>
-        <a href="/work/" class="btn btn--ghost" style="margin-top:10px;">Browse work samples <span class="arr">↗</span></a>
+        <a href="/work/" class="btn btn--ghost btn--spaced">Browse work samples <span class="arr">↗</span></a>
       </div>
     </div>
   </div>

@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://archnimations.com data:; frame-src https://my.spline.design; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Archnimations provides BIM drafting and Revit consulting services for buildings of all sizes — 3D modeling, 2D-to-3D conversion, high-quality CD sets, scheduling and cost estimation.">
 <link rel="canonical" href="https://archnimations.com/revit/">
 <title>Revit & BIM Services — Archnimations</title>
 <meta property="og:title" content="Revit & BIM Services — Archnimations">
 <meta property="og:description" content="BIM drafting and Revit consulting for buildings of all sizes.">
-<meta property="og:image" content="https://archnimations.com/assets/images/work/alpena-elevation.jpg">
+<meta property="og:image" content="https://archnimations.com/assets/images/work/alpena-elevation.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,18 +19,18 @@
 <body>
 
 <nav id="nav">
-  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693"></a>
-  <div class="nav-links">
+  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693" decoding="async"></a>
+  <div class="nav-links" id="primary-navigation">
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/work/">Work</a>
     <a href="/revit/" class="active">Revit</a>
     <a href="/contact/" class="btn btn--solid">Start a project</a>
   </div>
-  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
 </nav>
 
-<section class="section-pad page-head" style="padding-top:160px;">
+<section class="section-pad page-head page-head--tall">
   <div class="orb orb--glow"></div>
   <div class="wrap">
     <div class="section-head reveal">
@@ -50,17 +52,17 @@
         </ul>
       </div>
       <div class="split__media">
-        <img src="/assets/images/work/alpena-elevation.jpg" alt="Revit elevation and section documentation, Sunset Aurora">
+        <img src="/assets/images/work/alpena-elevation.webp" alt="Revit elevation and section documentation, Sunset Aurora" decoding="async" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-<section class="section-pad" style="padding-top:0;">
+<section class="section-pad section-pad--flush">
   <div class="wrap">
     <div class="split split--rev reveal">
       <div class="split__media">
-        <img src="/assets/images/work/alpena-section.jpg" alt="Revit section drawing">
+        <img src="/assets/images/work/alpena-section.webp" alt="Revit section drawing" decoding="async" loading="lazy">
       </div>
       <div class="split__body">
         <span class="eyebrow">Why Revit / BIM?</span>

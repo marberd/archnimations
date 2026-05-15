@@ -68,9 +68,13 @@ onScroll();
 if (burger) {
   burger.addEventListener('click', () => {
     document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', String(document.body.classList.contains('menu-open')));
   });
   document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => document.body.classList.remove('menu-open'));
+    a.addEventListener('click', () => {
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
@@ -163,6 +167,7 @@ if (lb) {
 
   const show = (i) => {
     visible = collectVisible();
+    if (!visible.length) return;
     idx = (i + visible.length) % visible.length;
     const src = visible[idx].querySelector('img').src;
     lbImg.src = src;
@@ -189,6 +194,27 @@ if (lb) {
     if (e.key === 'Escape') hide();
     if (e.key === 'ArrowLeft') show(idx - 1);
     if (e.key === 'ArrowRight') show(idx + 1);
+  });
+}
+
+// ─── CONTACT FORM ───────────────────────────────────
+const contactForm = document.querySelector('[data-contact-form]');
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const subject = String(data.get('subject') || 'Project inquiry').trim();
+    const message = String(data.get('message') || '').trim();
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      '',
+      message,
+    ].join('\n');
+
+    window.location.href = `mailto:info@archnimations.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 

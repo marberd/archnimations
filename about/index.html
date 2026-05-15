@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://archnimations.com data:; frame-src https://my.spline.design; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Archnimations is a design & technology-oriented studio specializing in detailed renderings, animation, architectural design and Revit consulting.">
 <link rel="canonical" href="https://archnimations.com/about/">
 <title>About — Archnimations</title>
 <meta property="og:title" content="About — Archnimations">
 <meta property="og:description" content="A design & technology studio passionate about every aspect of 3D visualization.">
-<meta property="og:image" content="https://archnimations.com/assets/images/work/sansurs-interior.jpg">
+<meta property="og:image" content="https://archnimations.com/assets/images/work/sansurs-interior.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,18 +19,18 @@
 <body>
 
 <nav id="nav">
-  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693"></a>
-  <div class="nav-links">
+  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693" decoding="async"></a>
+  <div class="nav-links" id="primary-navigation">
     <a href="/">Home</a>
     <a href="/about/" class="active">About</a>
     <a href="/work/">Work</a>
     <a href="/revit/">Revit</a>
     <a href="/contact/" class="btn btn--solid">Start a project</a>
   </div>
-  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
 </nav>
 
-<section class="section-pad page-head" style="padding-top:160px;">
+<section class="section-pad page-head page-head--tall">
   <div class="orb orb--glow"></div>
   <div class="wrap">
     <div class="section-head reveal">
@@ -39,20 +41,20 @@
 
     <div class="split reveal">
       <div class="split__media">
-        <img src="/assets/images/work/sansurs-interior.jpg" alt="Interior visualization, Sansurs Residence">
+        <img src="/assets/images/work/sansurs-interior.webp" alt="Interior visualization, Sansurs Residence" decoding="async" loading="lazy">
       </div>
       <div class="split__body">
         <span class="eyebrow">Our approach</span>
         <h2>Tailored to your vision — no shortcuts.</h2>
         <p>At Archnimations, our design solutions are specifically tailored to your needs. We go the extra mile to really understand your vision, and we don't take shortcuts with creativity or quality.</p>
         <p>We're cost-effective and time-efficient, and our transparency precedes us — it's why our clients value working with us, and why we rise above the competition.</p>
-        <p style="color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:600;">We are in this business to do great work.</p>
+        <p class="studio-statement">We are in this business to do great work.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section-pad" style="padding-top:0;">
+<section class="section-pad section-pad--flush">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Services</span>
@@ -69,7 +71,7 @@
         </ul>
       </div>
       <div class="split__media reveal">
-        <img src="/assets/images/work/alpena-exterior.jpg" alt="Exterior render, Sunset Aurora mixed-use development">
+        <img src="/assets/images/work/alpena-exterior.webp" alt="Exterior render, Sunset Aurora mixed-use development" decoding="async" loading="lazy">
       </div>
     </div>
   </div>

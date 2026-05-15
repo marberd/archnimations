@@ -9,7 +9,8 @@ Static site for Archnimations — architectural visualization, animation and Rev
 - `revit/` — Revit & BIM services
 - `contact/` — Contact info + message form
 - `assets/css/style.css` — design system
-- `assets/js/main.js` — nav, scroll reveal, gallery filter, lightbox
+- `assets/js/intro-state.js` — early intro-state setup for the home page
+- `assets/js/main.js` — nav, scroll reveal, metrics, contact mailto, gallery filter, lightbox
 - `assets/images/work/` — project renders and drawings
 
 ## Deployment
@@ -30,5 +31,4 @@ Email is handled by **Cloudflare Email Routing** (free forwarding to a personal 
 Set up at dash.cloudflare.com → Email → Email Routing.
 
 ## To do before launch
-- Contact form: replace `YOUR_FORM_ID` in `contact/index.html` with a real Formspree form ID (formspree.io).
 - Add a real favicon / studio logo (export from the old Wix site if available).

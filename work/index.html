@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://archnimations.com data:; frame-src https://my.spline.design; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Work packages from Archnimations, architectural renderings, animation and visualization across resort, residential, interior and retail projects.">
 <link rel="canonical" href="https://archnimations.com/work/">
 <title>Work Samples | Archnimations</title>
@@ -17,18 +19,18 @@
 <body>
 
 <nav id="nav">
-  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693"></a>
-  <div class="nav-links">
+  <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Archnimations" width="975" height="693" decoding="async"></a>
+  <div class="nav-links" id="primary-navigation">
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/work/" class="active">Work</a>
     <a href="/revit/">Revit</a>
     <a href="/contact/" class="btn btn--solid">Start a project</a>
   </div>
-  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
 </nav>
 
-<section class="section-pad page-head work-page" style="padding-top:132px;">
+<section class="section-pad page-head page-head--work work-page">
   <div class="orb orb--glow"></div>
   <div class="wrap">
     <div class="section-head reveal">
@@ -49,7 +51,7 @@
       <details class="package-card" data-cat="residential">
         <summary class="package-card__summary">
           <span class="package-card__media">
-            <img src="/assets/images/work/arboleda-tower/vision-01.webp" alt="Conceptual residential tower visualization in Santo Domingo">
+            <img src="/assets/images/work/arboleda-tower/vision-01.webp" alt="Conceptual residential tower visualization in Santo Domingo" decoding="async" loading="lazy">
           </span>
           <span class="package-card__body">
             <span class="shot__tag">Residential Tower, Santo Domingo</span>
@@ -62,15 +64,15 @@
         <div class="package-card__details">
           <p class="package-card__note">This proposal was developed for a client seeking to reveal the unrealized potential of an urban site and support a request for neighboring air rights. The tower combines contemporary luxury with the natural character of Santo Domingo through light stone, glass, warm wood tones, greenery and layered terraces. At street level, a landscaped arrival, active lobby, shaded pedestrian edges and tropical planting create a more generous urban experience. Above, residential units, balconies, terraces and amenity spaces frame a future where private development, public benefit and skyline growth can coexist.</p>
           <div class="gallery package-gallery">
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-01.webp" alt="Arboleda Tower exterior concept visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Tower Vision</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-02.webp" alt="Arboleda Tower residential facade visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Residential Facade</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-03.webp" alt="Arboleda Tower street arrival visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Street Arrival</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-04.webp" alt="Arboleda Tower terrace and balcony visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Layered Terraces</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-05.webp" alt="Arboleda Tower tropical residential concept"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Tropical Residence</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-06.webp" alt="Arboleda Tower amenity visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Amenities</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-07.webp" alt="Arboleda Tower urban context visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Urban Context</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-08.webp" alt="Arboleda Tower skyline visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Skyline Presence</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-09.webp" alt="Arboleda Tower concept detail visualization"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Concept Detail</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-01.webp" alt="Arboleda Tower exterior concept visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Tower Vision</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-02.webp" alt="Arboleda Tower residential facade visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Residential Facade</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-03.webp" alt="Arboleda Tower street arrival visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Street Arrival</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-04.webp" alt="Arboleda Tower terrace and balcony visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Layered Terraces</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-05.webp" alt="Arboleda Tower tropical residential concept" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Tropical Residence</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-06.webp" alt="Arboleda Tower amenity visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Amenities</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-07.webp" alt="Arboleda Tower urban context visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Urban Context</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-08.webp" alt="Arboleda Tower skyline visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Skyline Presence</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/arboleda-tower/vision-09.webp" alt="Arboleda Tower concept detail visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Arboleda Tower, Santo Domingo</div><div class="shot__name">Concept Detail</div></div></div>
           </div>
         </div>
       </details>
@@ -78,7 +80,7 @@
       <details class="package-card" data-cat="resort">
         <summary class="package-card__summary">
           <span class="package-card__media">
-            <img src="/assets/images/work/palma-resort/living-suite.webp" alt="Palma Resort hotel suite living area visualization in Punta Cana">
+            <img src="/assets/images/work/palma-resort/living-suite.webp" alt="Palma Resort hotel suite living area visualization in Punta Cana" decoding="async" loading="lazy">
           </span>
           <span class="package-card__body">
             <span class="shot__tag">Resort &amp; Hospitality, Punta Cana</span>
@@ -96,11 +98,11 @@
         <div class="package-card__details">
           <p class="package-card__note">Palma Resort is presented as a refined hospitality retreat, with guest rooms in a soft residential rhythm, spa spaces designed around quiet transition, and a site plan that organizes the experience from arrival to recovery, privacy and landscape.</p>
           <div class="gallery package-gallery">
-            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/living-suite.webp" alt="Palma Resort hotel suite living area visualization"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Suite Living Area</div></div></div>
-            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/bed-suite.webp" alt="Palma Resort bedroom suite visualization"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Bedroom Suite</div></div></div>
-            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/spa-lounge.webp" alt="Palma Resort spa lounge visualization"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Spa Lounge</div></div></div>
-            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/spa-treatment.webp" alt="Palma Resort spa treatment area visualization"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Spa Treatment Area</div></div></div>
-            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/site-plan.webp" alt="Palma Resort site plan in Punta Cana"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Site Plan</div></div></div>
+            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/living-suite.webp" alt="Palma Resort hotel suite living area visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Suite Living Area</div></div></div>
+            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/bed-suite.webp" alt="Palma Resort bedroom suite visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Bedroom Suite</div></div></div>
+            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/spa-lounge.webp" alt="Palma Resort spa lounge visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Spa Lounge</div></div></div>
+            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/spa-treatment.webp" alt="Palma Resort spa treatment area visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Spa Treatment Area</div></div></div>
+            <div class="shot" data-cat="resort"><img src="/assets/images/work/palma-resort/site-plan.webp" alt="Palma Resort site plan in Punta Cana" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Palma Resort, Punta Cana</div><div class="shot__name">Site Plan</div></div></div>
           </div>
         </div>
       </details>
@@ -108,7 +110,7 @@
       <details class="package-card" data-cat="residential">
         <summary class="package-card__summary">
           <span class="package-card__media">
-            <img src="/assets/images/work/alpena-exterior.jpg" alt="Sunset Aurora exterior render in Alpena, Michigan">
+            <img src="/assets/images/work/alpena-exterior.webp" alt="Sunset Aurora exterior render in Alpena, Michigan" decoding="async" loading="lazy">
           </span>
           <span class="package-card__body">
             <span class="shot__tag">Residential, Alpena MI</span>
@@ -121,15 +123,15 @@
         <div class="package-card__details">
           <p class="package-card__note">A broad development presentation package with marketing views, apartment and lobby interiors, and technical drawing sheets that help explain both atmosphere and building logic.</p>
           <div class="gallery package-gallery">
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-exterior.jpg" alt="Sunset Aurora exterior render"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Exterior</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-night.jpg" alt="Sunset Aurora night interior render"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Night View</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-lobby.jpg" alt="Sunset Aurora lobby interior"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Lobby</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-apartment.jpg" alt="Sunset Aurora apartment interior"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Apartment</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-site-plan.jpg" alt="Sunset Aurora site plan"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Site Plan</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-ground-floor.jpg" alt="Sunset Aurora ground floor plan"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Ground Floor</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-typical-floor.jpg" alt="Sunset Aurora typical floor plan"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Typical Floor</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-section.jpg" alt="Sunset Aurora section"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Section</div></div></div>
-            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-basement.jpg" alt="Sunset Aurora basement parking"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Parking</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-exterior.webp" alt="Sunset Aurora exterior render" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Exterior</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-night.webp" alt="Sunset Aurora night interior render" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Night View</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-lobby.webp" alt="Sunset Aurora lobby interior" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Lobby</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-apartment.webp" alt="Sunset Aurora apartment interior" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Apartment</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-site-plan.webp" alt="Sunset Aurora site plan" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Site Plan</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-ground-floor.webp" alt="Sunset Aurora ground floor plan" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Ground Floor</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-typical-floor.webp" alt="Sunset Aurora typical floor plan" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Typical Floor</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-section.webp" alt="Sunset Aurora section" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Section</div></div></div>
+            <div class="shot" data-cat="residential"><img src="/assets/images/work/alpena-basement.webp" alt="Sunset Aurora basement parking" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sunset Aurora, Alpena MI</div><div class="shot__name">Parking</div></div></div>
           </div>
         </div>
       </details>
@@ -137,7 +139,7 @@
       <details class="package-card" data-cat="interiors">
         <summary class="package-card__summary">
           <span class="package-card__media">
-            <img src="/assets/images/work/sansurs-interior.jpg" alt="Sansurs Residence interior visualization">
+            <img src="/assets/images/work/sansurs-interior.webp" alt="Sansurs Residence interior visualization" decoding="async" loading="lazy">
           </span>
           <span class="package-card__body">
             <span class="shot__tag">Interiors, Dominican Republic</span>
@@ -150,13 +152,13 @@
         <div class="package-card__details">
           <p class="package-card__note">A residential package centered on inhabitable interior moments, room mood and material clarity for client review.</p>
           <div class="gallery package-gallery">
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-interior.jpg" alt="Sansurs Residence interior visualization"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Interior</div></div></div>
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-bedroom-master.png" alt="Sansurs Residence master bedroom"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Master Bedroom</div></div></div>
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-bathroom-master.png" alt="Sansurs Residence master bathroom"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Master Bath</div></div></div>
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-child-bedroom.png" alt="Sansurs Residence bedroom"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Bedroom</div></div></div>
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-p01.jpg" alt="Sansurs Residence exterior visualization"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Residence View</div></div></div>
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-p02.jpg" alt="Sansurs Residence visualization"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Residence View</div></div></div>
-            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-p03.jpg" alt="Sansurs Residence visualization"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Residence View</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-interior.webp" alt="Sansurs Residence interior visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Interior</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-bedroom-master.webp" alt="Sansurs Residence master bedroom" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Master Bedroom</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-bathroom-master.webp" alt="Sansurs Residence master bathroom" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Master Bath</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-child-bedroom.webp" alt="Sansurs Residence bedroom" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Bedroom</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-p01.webp" alt="Sansurs Residence exterior visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Residence View</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-p02.webp" alt="Sansurs Residence visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Residence View</div></div></div>
+            <div class="shot" data-cat="interiors"><img src="/assets/images/work/sansurs-p03.webp" alt="Sansurs Residence visualization" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Sansurs Residence, DR</div><div class="shot__name">Residence View</div></div></div>
           </div>
         </div>
       </details>
@@ -164,7 +166,7 @@
       <details class="package-card" data-cat="retail">
         <summary class="package-card__summary">
           <span class="package-card__media">
-            <img src="/assets/images/work/burton-in99-main.webp" alt="BURTON IN99 flagship retail concept render in Chengdu">
+            <img src="/assets/images/work/burton-in99-main.webp" alt="BURTON IN99 flagship retail concept render in Chengdu" decoding="async" loading="lazy">
           </span>
           <span class="package-card__body">
             <span class="shot__tag">Retail, Chengdu</span>
@@ -177,11 +179,11 @@
         <div class="package-card__details">
           <p class="package-card__note">A brand environment package showing the flagship retail experience, fixture language, material rhythm and plan organization.</p>
           <div class="gallery package-gallery">
-            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-main.webp" alt="BURTON IN99 flagship retail concept, Chengdu"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Flagship</div></div></div>
-            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-detail-1.webp" alt="BURTON IN99 retail detail"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Detail</div></div></div>
-            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-detail-2.webp" alt="BURTON IN99 retail fixture detail"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Fixture Detail</div></div></div>
-            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-spread.webp" alt="BURTON IN99 floor plan"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Plan</div></div></div>
-            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-china.jpg" alt="Retail concept render, China"><div class="shot__meta"><div class="shot__tag">Retail, China</div><div class="shot__name">Retail Concept</div></div></div>
+            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-main.webp" alt="BURTON IN99 flagship retail concept, Chengdu" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Flagship</div></div></div>
+            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-detail-1.webp" alt="BURTON IN99 retail detail" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Detail</div></div></div>
+            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-detail-2.webp" alt="BURTON IN99 retail fixture detail" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Fixture Detail</div></div></div>
+            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-in99-spread.webp" alt="BURTON IN99 floor plan" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">BURTON IN99, Chengdu</div><div class="shot__name">Plan</div></div></div>
+            <div class="shot" data-cat="retail"><img src="/assets/images/work/burton-china.webp" alt="Retail concept render, China" decoding="async" loading="lazy"><div class="shot__meta"><div class="shot__tag">Retail, China</div><div class="shot__name">Retail Concept</div></div></div>
           </div>
         </div>
       </details>
@@ -223,7 +225,7 @@
 <div id="lightbox">
   <button class="lb-close" aria-label="Close">✕</button>
   <button class="lb-nav prev" aria-label="Previous">‹</button>
-  <img src="" alt="Enlarged work sample">
+  <img src="" alt="Enlarged work sample" decoding="async">
   <button class="lb-nav next" aria-label="Next">›</button>
 </div>
 
