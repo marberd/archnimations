@@ -30,5 +30,5 @@ Email is handled by **Cloudflare Email Routing** (free forwarding to a personal 
 Set up at dash.cloudflare.com → Email → Email Routing.
 
 ## To do before launch
-- Contact form: replace `YOUR_FORM_ID` in `contact/index.html` with a real Formspree form ID (formspree.io).
-- Add a real favicon / studio logo (export from the old Wix site if available).
+- Add a real favicon / studio logo export if a sharper browser icon is available.
+- Optional: replace the static email handoff in `contact/index.html` with Formspree or another form backend if inbox-only inquiries are not enough.
