@@ -128,7 +128,7 @@ if (lb) {
   let idx = 0;
 
   const collectVisible = () =>
-    [...shots].filter(s => !s.classList.contains('hide'));
+    [...shots].filter(s => !s.classList.contains('hide') && s.getClientRects().length);
 
   const show = (i) => {
     visible = collectVisible();
