@@ -207,6 +207,19 @@ img { display: block; max-width: 100%; }
   transition: padding 0.4s var(--ease), background 0.4s, border-color 0.4s, box-shadow 0.4s;
   border-bottom: 1px solid transparent;
 }
+body.home-page #nav:not(.scrolled) {
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+body.home-page #nav {
+  transition: transform 0.5s var(--ease), opacity 0.35s, padding 0.4s var(--ease), background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+body.home-page #nav.scrolled {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
 #nav.scrolled {
   padding: 13px 32px;
   background: rgba(246,246,250,0.72);
