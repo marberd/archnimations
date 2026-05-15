@@ -103,6 +103,7 @@ window.addEventListener('load', () => setTimeout(sweep, 250));
 // ─── WORK GALLERY: category filter ───────────────────
 const catBtns = document.querySelectorAll('.cat-btn');
 const shots = document.querySelectorAll('.shot');
+const packageCards = document.querySelectorAll('.package-card');
 if (catBtns.length) {
   catBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -111,6 +112,9 @@ if (catBtns.length) {
       const cat = btn.dataset.cat;
       shots.forEach(s => {
         s.classList.toggle('hide', cat !== 'all' && s.dataset.cat !== cat);
+      });
+      packageCards.forEach(card => {
+        card.classList.toggle('hide', cat !== 'all' && card.dataset.cat !== cat);
       });
     });
   });
