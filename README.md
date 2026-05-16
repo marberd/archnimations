@@ -1,12 +1,11 @@
 # archnimations.com
 
-Static site for Archnimations — architectural visualization, animation and Revit consulting studio. Pure HTML/CSS/JS, no build step. Hosted on GitHub Pages.
+Static site for Archnimations — architectural visualization, animation and design communication studio. Pure HTML/CSS/JS, no build step. Hosted on GitHub Pages.
 
 ## Structure
 - `index.html` — Home
 - `about/` — About the studio
 - `work/` — Work samples (filterable gallery + lightbox)
-- `revit/` — Revit & BIM services
 - `contact/` — Contact info + message form
 - `assets/css/style.css` — design system
 - `assets/js/intro-state.js` — early intro-state setup for the home page
