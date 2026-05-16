@@ -929,13 +929,12 @@ section { position: relative; z-index: 1; }
 footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: relative; z-index: 1; }
 .foot-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   gap: 40px;
   flex-wrap: wrap;
   margin-bottom: 44px;
 }
-.foot-tag { color: var(--text-mid); max-width: 34ch; margin-top: 14px; }
 .foot-nav { display: flex; gap: 28px; flex-wrap: wrap; }
 .foot-nav a { color: var(--text-mid); font-size: 0.92rem; transition: color 0.25s; }
 .foot-nav a:hover { color: var(--text); }
