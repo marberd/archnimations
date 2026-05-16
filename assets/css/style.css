@@ -787,6 +787,28 @@ section { position: relative; z-index: 1; }
   font-weight: 600;
 }
 
+.selected-project {
+  margin-top: -34px;
+}
+.selected-project .wrap {
+  max-width: none;
+  padding-left: 0;
+  padding-right: clamp(28px, 5vw, 72px);
+}
+.selected-project .split {
+  grid-template-columns: minmax(0, 1.16fr) minmax(340px, 0.84fr);
+  gap: clamp(36px, 5vw, 78px);
+}
+.selected-project .split__media {
+  border-left: 0;
+  border-radius: 0 22px 22px 0;
+}
+.selected-project .split__media img {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: rgba(255,255,255,0.72);
+}
+
 /* ── CHECK LIST ───────────────────────────────────── */
 .ticks { list-style: none; margin-top: 8px; }
 .ticks li { position: relative; padding-left: 30px; margin-bottom: 14px; color: var(--text-mid); }
@@ -963,6 +985,15 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .split, .split--rev .split__media, .contact-grid, .form-row { grid-template-columns: 1fr; }
   .split { gap: 36px; }
+  .selected-project .wrap {
+    padding-right: 20px;
+  }
+  .selected-project .split {
+    grid-template-columns: 1fr;
+  }
+  .selected-project .split__body {
+    padding-left: 20px;
+  }
   .split--rev .split__media { order: 0; }
 }
 @media (max-width: 560px) {
