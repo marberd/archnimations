@@ -5,7 +5,7 @@ Static site for Archnimations — architectural visualization, animation and des
 ## Structure
 - `index.html` — Home
 - `about/` — About the studio
-- `work/` — Work samples (filterable gallery + lightbox)
+- `work/` — Projects gallery with expandable packages and lightbox
 - `contact/` — Contact info + message form
 - `assets/css/style.css` — design system
 - `assets/js/intro-state.js` — early intro-state setup for the home page
