@@ -907,7 +907,9 @@ section { position: relative; z-index: 1; }
 
 .selected-project {
   margin-top: -34px;
+  padding-bottom: 54px;
 }
+.selected-project + .cta-band { padding-top: 48px; }
 .selected-project .wrap {
   max-width: none;
   padding-left: 0;
@@ -917,6 +919,21 @@ section { position: relative; z-index: 1; }
   grid-template-columns: minmax(0, 1.16fr) minmax(340px, 0.84fr);
   gap: clamp(36px, 5vw, 78px);
 }
+.selected-project .split.reveal .split__media {
+  opacity: 0;
+  transform: translateX(-96px);
+  transition: opacity 0.9s var(--ease), transform 1s var(--ease), box-shadow 0.4s;
+}
+.selected-project .split.reveal .split__body {
+  opacity: 0;
+  transform: translateX(96px);
+  transition: opacity 0.9s var(--ease) 0.08s, transform 1s var(--ease) 0.08s;
+}
+.selected-project .split.reveal.in .split__media,
+.selected-project .split.reveal.in .split__body {
+  opacity: 1;
+  transform: none;
+}
 .selected-project .split__media {
   border-left: 0;
   border-radius: 0 22px 22px 0;
@@ -925,6 +942,20 @@ section { position: relative; z-index: 1; }
   aspect-ratio: 16 / 9;
   object-fit: contain;
   background: rgba(255,255,255,0.72);
+}
+.selected-project__badge {
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.68);
+  color: var(--text-mid);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ── CHECK LIST ───────────────────────────────────── */
@@ -1114,6 +1145,10 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   .selected-project .split {
     grid-template-columns: 1fr;
   }
+  .selected-project .split.reveal .split__media,
+  .selected-project .split.reveal .split__body {
+    transform: translateY(24px);
+  }
   .selected-project .split__body {
     padding-left: 20px;
   }
@@ -1153,5 +1188,10 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
 
 @media (prefers-reduced-motion: reduce) {
   *, body::before, body::after { animation: none !important; }
+  .selected-project .split.reveal .split__media,
+  .selected-project .split.reveal .split__body {
+    transition: none !important;
+    transform: none !important;
+  }
   #intro { display: none !important; }
 }
