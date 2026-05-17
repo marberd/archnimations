@@ -200,21 +200,59 @@ if (lb) {
 // ─── CONTACT FORM ───────────────────────────────────
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const data = new FormData(contactForm);
-    const name = String(data.get('name') || '').trim();
-    const email = String(data.get('email') || '').trim();
-    const subject = String(data.get('subject') || 'Project inquiry').trim();
-    const message = String(data.get('message') || '').trim();
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      '',
-      message,
-    ].join('\n');
+  const status = contactForm.querySelector('[data-form-status]');
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
 
-    window.location.href = `mailto:info@archnimations.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+    }
+    if (status) {
+      status.textContent = '';
+      status.removeAttribute('data-state');
+    }
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        if (status) {
+          status.textContent = 'Thanks. Your message is on its way and we will reply shortly.';
+          status.setAttribute('data-state', 'success');
+        }
+      } else {
+        const payload = await response.json().catch(() => ({}));
+        const detail = Array.isArray(payload.errors)
+          ? payload.errors.map(e => e.message).filter(Boolean).join(', ')
+          : '';
+        if (status) {
+          status.textContent = detail || 'Something went wrong. Please try again or email info@archnimations.com.';
+          status.setAttribute('data-state', 'error');
+        }
+      }
+    } catch (err) {
+      if (status) {
+        status.textContent = 'Network error. Please try again or email info@archnimations.com.';
+        status.setAttribute('data-state', 'error');
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+      }
+    }
   });
 }
 

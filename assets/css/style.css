@@ -1231,6 +1231,24 @@ section { position: relative; z-index: 1; }
   box-shadow: 0 0 0 3px rgba(139,92,246,0.16);
 }
 .field textarea { resize: vertical; min-height: 130px; }
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form-status {
+  margin: 14px 0 0;
+  min-height: 1.4em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+.form-status[data-state="success"] { color: var(--iris-3); }
+.form-status[data-state="error"]   { color: var(--iris-4); }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
 
 /* ── FOOTER ───────────────────────────────────────── */
 footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: relative; z-index: 1; }
