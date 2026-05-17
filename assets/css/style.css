@@ -1173,7 +1173,7 @@ section { position: relative; z-index: 1; }
 /* ── STUDIO PRINCIPLE (about signature) ──────────── */
 .principle {
   position: relative;
-  padding: clamp(96px, 12vw, 168px) 0 clamp(96px, 12vw, 168px);
+  padding: clamp(44px, 6vw, 72px) 0;
   text-align: center;
   z-index: 1;
 }
@@ -1346,12 +1346,10 @@ section { position: relative; z-index: 1; }
 .page-head--about .split { margin-top: 12px; }
 
 /* About page tighter section rhythm */
-.about-page .section-pad,
-body .credentials.section-pad { padding-top: 60px; padding-bottom: 60px; }
-.credentials.section-pad { padding-top: 24px; }
-.credentials .section-head { margin-bottom: 32px; }
-.credentials .stats { margin-bottom: 44px; }
-.about-page .cta-band { padding: 68px 0 80px; }
+.about-page .section-pad { padding-top: 36px; padding-bottom: 36px; }
+.about-page .section-pad--flush { padding-top: 0; }
+.about-page .section-head { margin-bottom: 28px; }
+.about-page .cta-band { padding: 56px 0 64px; }
 
 /* Zoomed/cropped media variant */
 .split__media--zoom {
