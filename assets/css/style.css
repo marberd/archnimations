@@ -1217,21 +1217,17 @@ section { position: relative; z-index: 1; }
 .pano__caption {
   position: absolute;
   z-index: 3;
-  left: clamp(20px, 4vw, 48px);
-  top: clamp(22px, 3vw, 36px);
+  right: clamp(24px, 3.6vw, 48px);
+  bottom: clamp(208px, 26vh, 272px);
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(0.78rem, 1vw, 0.92rem);
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.62);
+  text-align: right;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.5);
   pointer-events: none;
-  padding: 8px 14px;
-  border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  background: rgba(12,12,20,0.18);
 }
 
 /* Footer overlay variant when the panorama runs to the page bottom */
@@ -1258,6 +1254,7 @@ section { position: relative; z-index: 1; }
 @media (max-width: 700px) {
   .pano--full { height: clamp(500px, 72vh, 640px); }
   .footer--over-pano { margin-top: calc(-1 * clamp(140px, 18vh, 180px)); }
+  .pano__caption { bottom: clamp(180px, 24vh, 220px); letter-spacing: 0.28em; }
 }
 
 /* ── STUDIO PRINCIPLE (about signature) ──────────── */
