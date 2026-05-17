@@ -43,7 +43,7 @@ if (intro && document.documentElement.classList.contains('intro-pending')) {
 // ─── HERO WORD ROTATOR ───────────────────────────────
 const rotator = document.querySelector('.rotator');
 if (rotator) {
-  const words = ['visualization', 'design', 'rendering', 'animation'];
+  const words = ['Visualization', 'Design', 'Rendering', 'Animation'];
   let ri = 0;
   setInterval(() => {
     rotator.classList.add('rotator--out');
