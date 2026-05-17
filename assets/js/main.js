@@ -159,9 +159,9 @@ if (catBtns.length) {
 const pano = document.querySelector('[data-pano]');
 if (pano) {
   const section = pano.closest('.pano') || pano;
-  const RANGE_X = 90;
-  const RANGE_Y = 40;
-  const EASE = 0.09;
+  const RANGE_X = 220;
+  const RANGE_Y = 80;
+  const EASE = 0.22;
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
   let raf = null;
