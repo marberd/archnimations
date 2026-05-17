@@ -1189,6 +1189,53 @@ section { position: relative; z-index: 1; }
 }
 .ticks li b { color: var(--text); font-weight: 600; }
 
+/* Rich variant: numbered, two-line, hover-sliding rows */
+.ticks--rich { margin: 0; }
+.ticks--rich li {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(14px, 1.6vw, 22px);
+  padding: 18px 0;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.4s var(--ease);
+}
+.ticks--rich li:first-child { padding-top: 2px; }
+.ticks--rich li:last-child { border-bottom: 0; }
+.ticks--rich li::before { display: none; }
+.ticks__num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.5em;
+  transition: color 0.35s var(--ease), letter-spacing 0.35s var(--ease);
+}
+.ticks--rich li > div { display: grid; gap: 4px; }
+.ticks--rich li b {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.05rem, 1.55vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  transition: color 0.35s var(--ease);
+}
+.ticks--rich li span {
+  display: block;
+  color: var(--text-mid);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  max-width: 52ch;
+}
+.ticks--rich li:hover { padding-left: clamp(6px, 1.4vw, 14px); }
+.ticks--rich li:hover .ticks__num {
+  color: var(--iris-2);
+  letter-spacing: 0.28em;
+}
+
 /* ── CTA BAND (glass panel) ───────────────────────── */
 .cta-band { padding: 120px 0; }
 .cta-band .wrap {
@@ -1213,8 +1260,91 @@ section { position: relative; z-index: 1; }
 .cta-band .btn { position: relative; z-index: 1; }
 
 /* ── CONTACT (glass cards) ────────────────────────── */
-.page-head--about { padding-top: 110px; padding-bottom: 56px; }
-.page-head--about .about-hero { margin-bottom: 48px; }
+.page-head--about { padding-top: 110px; padding-bottom: 40px; }
+.page-head--about .about-hero { margin-bottom: 36px; }
+.page-head--about .split { margin-top: 12px; }
+
+/* About page tighter section rhythm */
+.about-page .section-pad,
+body .credentials.section-pad { padding-top: 60px; padding-bottom: 60px; }
+.credentials.section-pad { padding-top: 24px; }
+.credentials .section-head { margin-bottom: 32px; }
+.credentials .stats { margin-bottom: 44px; }
+.about-page .cta-band { padding: 68px 0 80px; }
+
+/* Zoomed/cropped media variant */
+.split__media--zoom {
+  overflow: hidden;
+}
+.split__media--zoom img {
+  transform: scale(1.22);
+  transform-origin: 52% 56%;
+  aspect-ratio: 4 / 3;
+  transition: transform 1.2s var(--ease);
+}
+.split__media--zoom:hover img { transform: scale(1.28); }
+
+/* Capabilities marquee */
+.capabilities {
+  position: relative;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.4);
+  overflow: hidden;
+  z-index: 1;
+}
+.capabilities::before,
+.capabilities::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 14vw;
+  pointer-events: none;
+  z-index: 2;
+}
+.capabilities::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg), transparent);
+}
+.capabilities::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+.capabilities__track {
+  display: flex;
+  width: max-content;
+  animation: capMarquee 48s linear infinite;
+  will-change: transform;
+}
+.capabilities__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 2.4vw, 36px);
+  padding: 0 clamp(11px, 1.2vw, 18px);
+  margin: 0;
+}
+.capabilities__list li {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  letter-spacing: 0.04em;
+  color: var(--text);
+  white-space: nowrap;
+}
+.capabilities__list .capabilities__dot {
+  font-size: 1.4rem;
+  line-height: 0;
+  color: var(--text-dim);
+}
+@keyframes capMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .capabilities__track { animation: none; }
+}
 .page-head--contact { padding-top: 104px; padding-bottom: 48px; }
 .contact-hero {
   display: grid;
