@@ -155,45 +155,74 @@ if (catBtns.length) {
   });
 }
 
-// ─── LIGHTBOX ────────────────────────────────────────
-const lb = document.getElementById('lightbox');
-if (lb) {
-  const lbImg = lb.querySelector('img');
-  let visible = [];
-  let idx = 0;
-
-  const collectVisible = () =>
-    [...shots].filter(s => !s.classList.contains('hide') && s.getClientRects().length);
-
-  const show = (i) => {
-    visible = collectVisible();
-    if (!visible.length) return;
-    idx = (i + visible.length) % visible.length;
-    const src = visible[idx].querySelector('img').src;
-    lbImg.src = src;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-  const hide = () => {
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  shots.forEach(s => {
-    s.addEventListener('click', () => {
-      const vis = collectVisible();
-      show(vis.indexOf(s));
+// ─── PACKAGE ACCORDION + VIEWER ──────────────────────
+const packageDetails = document.querySelectorAll('details.package-card');
+if (packageDetails.length) {
+  // Single-open accordion: opening one closes the rest.
+  packageDetails.forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (!d.open) return;
+      packageDetails.forEach(o => { if (o !== d) o.open = false; });
+      d.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-  lb.querySelector('.lb-close').addEventListener('click', hide);
-  lb.querySelector('.lb-nav.prev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
-  lb.querySelector('.lb-nav.next').addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
-  lb.addEventListener('click', e => { if (e.target === lb) hide(); });
-  document.addEventListener('keydown', e => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') hide();
-    if (e.key === 'ArrowLeft') show(idx - 1);
-    if (e.key === 'ArrowRight') show(idx + 1);
+
+  // Transform each gallery into a big main image + tiny thumbnail strip.
+  packageDetails.forEach(detail => {
+    const gallery = detail.querySelector('.gallery.package-gallery');
+    if (!gallery) return;
+    const sourceShots = [...gallery.querySelectorAll('.shot')];
+    if (!sourceShots.length) return;
+
+    const viewer = document.createElement('div');
+    viewer.className = 'package-viewer';
+
+    const main = document.createElement('div');
+    main.className = 'package-viewer__main';
+    const mainImg = document.createElement('img');
+    mainImg.decoding = 'async';
+    const firstImg = sourceShots[0].querySelector('img');
+    mainImg.src = firstImg.src;
+    mainImg.alt = firstImg.alt;
+    main.appendChild(mainImg);
+
+    const thumbs = document.createElement('div');
+    thumbs.className = 'package-viewer__thumbs';
+    thumbs.setAttribute('role', 'tablist');
+
+    sourceShots.forEach((shot, i) => {
+      const src = shot.querySelector('img');
+      const label = shot.querySelector('.shot__name')?.textContent?.trim() || `Image ${i + 1}`;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'package-thumb' + (i === 0 ? ' is-active' : '');
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      const tImg = document.createElement('img');
+      tImg.src = src.src;
+      tImg.alt = '';
+      tImg.decoding = 'async';
+      tImg.loading = 'lazy';
+      btn.appendChild(tImg);
+      thumbs.appendChild(btn);
+
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('is-active')) return;
+        mainImg.src = src.src;
+        mainImg.alt = src.alt;
+        thumbs.querySelectorAll('.package-thumb').forEach(b => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+      });
+    });
+
+    viewer.appendChild(main);
+    viewer.appendChild(thumbs);
+    gallery.replaceWith(viewer);
   });
 }
 
