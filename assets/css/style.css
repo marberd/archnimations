@@ -1033,6 +1033,8 @@ section { position: relative; z-index: 1; }
 .cta-band .btn { position: relative; z-index: 1; }
 
 /* ── CONTACT (glass cards) ────────────────────────── */
+.page-head--about { padding-top: 110px; padding-bottom: 56px; }
+.page-head--about .about-hero { margin-bottom: 48px; }
 .page-head--contact { padding-top: 104px; padding-bottom: 48px; }
 .contact-hero {
   display: grid;
@@ -1090,7 +1092,7 @@ section { position: relative; z-index: 1; }
 .contact-portrait {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 7 / 11;
   margin: 0;
   border-radius: 26px;
   overflow: visible;
@@ -1320,6 +1322,8 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
     gap: 16px;
   }
   .page-head--contact { padding-top: 96px; padding-bottom: 32px; }
+  .page-head--about { padding-top: 100px; padding-bottom: 40px; }
+  .page-head--about .about-hero { margin-bottom: 36px; }
   .split--rev .split__media { order: 0; }
 }
 @media (max-width: 560px) {
