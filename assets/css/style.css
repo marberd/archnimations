@@ -1170,6 +1170,70 @@ section { position: relative; z-index: 1; }
   font-weight: 600;
 }
 
+/* ── PANORAMIC PARALLAX (about closer) ────────────── */
+.pano {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 38vw, 460px);
+  overflow: hidden;
+  background: #0c0c14;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  z-index: 1;
+  cursor: crosshair;
+}
+.pano__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.pano__frame img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 132%;
+  height: 132%;
+  object-fit: cover;
+  object-position: center;
+  transform: translate3d(calc(-50% + var(--pano-x, 0px)), calc(-50% + var(--pano-y, 0px)), 0) scale(var(--pano-scale, 1));
+  transition: transform 0.9s var(--ease);
+  will-change: transform;
+}
+.pano.is-tracking .pano__frame img {
+  transition: transform 0.18s linear;
+}
+.pano::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(12,12,20,0.25), transparent 18%, transparent 82%, rgba(12,12,20,0.25)),
+    linear-gradient(to bottom, rgba(12,12,20,0.16), transparent 30%);
+  pointer-events: none;
+  z-index: 2;
+}
+.pano__hint {
+  position: absolute;
+  z-index: 3;
+  right: clamp(20px, 3vw, 36px);
+  bottom: clamp(18px, 2.6vw, 28px);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.78);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.pano.reveal.in .pano__hint { opacity: 1; transform: none; }
+.pano:hover .pano__hint { opacity: 0; transform: translateY(-4px); }
+@media (prefers-reduced-motion: reduce) {
+  .pano__frame img { transition: none !important; }
+}
+
 /* ── STUDIO PRINCIPLE (about signature) ──────────── */
 .principle {
   position: relative;

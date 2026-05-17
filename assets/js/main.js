@@ -155,6 +155,63 @@ if (catBtns.length) {
   });
 }
 
+// ─── PANORAMIC PARALLAX (about closer) ───────────────
+const pano = document.querySelector('[data-pano]');
+if (pano) {
+  const section = pano.closest('.pano') || pano;
+  const RANGE_X = 90;
+  const RANGE_Y = 40;
+  const EASE = 0.09;
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  let raf = null;
+  let active = false;
+
+  const setVars = () => {
+    section.style.setProperty('--pano-x', currentX.toFixed(2) + 'px');
+    section.style.setProperty('--pano-y', currentY.toFixed(2) + 'px');
+  };
+
+  const tick = () => {
+    currentX += (targetX - currentX) * EASE;
+    currentY += (targetY - currentY) * EASE;
+    setVars();
+    if (active || Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+      raf = requestAnimationFrame(tick);
+    } else {
+      raf = null;
+    }
+  };
+  const startLoop = () => { if (!raf) raf = requestAnimationFrame(tick); };
+
+  const onMove = (e) => {
+    const rect = pano.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width - 0.5;
+    const ny = (e.clientY - rect.top) / rect.height - 0.5;
+    targetX = -nx * RANGE_X * 2;
+    targetY = -ny * RANGE_Y * 2;
+    section.classList.add('is-tracking');
+    startLoop();
+  };
+  const onLeave = () => {
+    targetX = 0;
+    targetY = 0;
+    section.classList.remove('is-tracking');
+    startLoop();
+  };
+
+  pano.addEventListener('mousemove', onMove, { passive: true });
+  pano.addEventListener('mouseleave', onLeave);
+
+  const pio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      active = e.isIntersecting;
+      if (active) startLoop();
+    });
+  }, { threshold: 0.05 });
+  pio.observe(pano);
+}
+
 // ─── VALUES ROTATOR (about hero) ─────────────────────
 const valuesRotator = document.querySelector('.values-rotator');
 if (valuesRotator) {
