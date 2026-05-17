@@ -155,6 +155,40 @@ if (catBtns.length) {
   });
 }
 
+// ─── VALUES ROTATOR (about hero) ─────────────────────
+const valuesRotator = document.querySelector('.values-rotator');
+if (valuesRotator) {
+  const items = [...valuesRotator.querySelectorAll('.values-rotator__item')];
+  const dots = [...valuesRotator.querySelectorAll('.values-rotator__dot')];
+  let vIdx = Math.max(0, items.findIndex(i => i.classList.contains('is-active')));
+  let vTimer = null;
+  let vPaused = false;
+  const V_INTERVAL = 4000;
+
+  const showValue = (i) => {
+    vIdx = (i + items.length) % items.length;
+    items.forEach((el, n) => el.classList.toggle('is-active', n === vIdx));
+    dots.forEach((el, n) => {
+      el.classList.toggle('is-active', n === vIdx);
+      el.setAttribute('aria-selected', String(n === vIdx));
+    });
+  };
+  const vTick = () => { if (!vPaused) showValue(vIdx + 1); };
+  const vStart = () => { if (!vTimer) vTimer = setInterval(vTick, V_INTERVAL); };
+  const vStop = () => { if (vTimer) { clearInterval(vTimer); vTimer = null; } };
+
+  dots.forEach((d, i) => d.addEventListener('click', () => { showValue(i); vStop(); vStart(); }));
+  valuesRotator.addEventListener('mouseenter', () => { vPaused = true; });
+  valuesRotator.addEventListener('mouseleave', () => { vPaused = false; });
+  valuesRotator.addEventListener('focusin', () => { vPaused = true; });
+  valuesRotator.addEventListener('focusout', () => { vPaused = false; });
+
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting ? vStart() : vStop());
+  }, { threshold: 0.3 });
+  vio.observe(valuesRotator);
+}
+
 // ─── ORBIT SERVICES (constellation tabs) ─────────────
 const orbit = document.querySelector('.orbit-services');
 if (orbit) {
