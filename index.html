@@ -99,57 +99,61 @@
         </div>
       </div>
     </div>
-    <ol class="services-list" aria-label="Studio services">
-      <li class="services-list__item reveal">
-        <span class="services-list__num">01</span>
-        <div class="services-list__body">
+    <div class="orbit-services reveal">
+      <ol class="orbit-track" role="tablist" aria-label="Studio services">
+        <li class="orbit-node is-active">
+          <button type="button" role="tab" aria-selected="true" aria-controls="orbit-panel-01">
+            <span class="orbit-node__num">01</span>
+          </button>
+        </li>
+        <li class="orbit-node">
+          <button type="button" role="tab" aria-selected="false" aria-controls="orbit-panel-02">
+            <span class="orbit-node__num">02</span>
+          </button>
+        </li>
+        <li class="orbit-node">
+          <button type="button" role="tab" aria-selected="false" aria-controls="orbit-panel-03">
+            <span class="orbit-node__num">03</span>
+          </button>
+        </li>
+        <li class="orbit-node">
+          <button type="button" role="tab" aria-selected="false" aria-controls="orbit-panel-04">
+            <span class="orbit-node__num">04</span>
+          </button>
+        </li>
+        <li class="orbit-node">
+          <button type="button" role="tab" aria-selected="false" aria-controls="orbit-panel-05">
+            <span class="orbit-node__num">05</span>
+          </button>
+        </li>
+      </ol>
+      <div class="orbit-stage" aria-live="polite">
+        <article class="orbit-panel is-active" id="orbit-panel-01" role="tabpanel">
           <h3>Rendering &amp; Animation</h3>
           <p>Realistic still visualizations and architectural animation that communicate design intent to clients and stakeholders.</p>
-        </div>
-      </li>
-      <li class="services-list__item reveal">
-        <span class="services-list__num">02</span>
-        <div class="services-list__body">
+        </article>
+        <article class="orbit-panel" id="orbit-panel-02" role="tabpanel">
           <h3>3D Models</h3>
           <p>Accurate, presentation ready 3D models built from your plans, sketches or existing CAD files.</p>
-        </div>
-      </li>
-      <li class="services-list__item reveal">
-        <span class="services-list__num">03</span>
-        <div class="services-list__body">
+        </article>
+        <article class="orbit-panel" id="orbit-panel-03" role="tabpanel">
           <h3>Virtual Tours &amp; 360° Panoramas</h3>
           <p>Immersive architectural virtual tours and 360° 3D panoramas that let clients walk the space before it's built.</p>
-        </div>
-      </li>
-      <li class="services-list__item reveal">
-        <span class="services-list__num">04</span>
-        <div class="services-list__body">
+        </article>
+        <article class="orbit-panel" id="orbit-panel-04" role="tabpanel">
           <h3>Interior &amp; Exterior Visualization</h3>
           <p>Interior and exterior visualization across residential, commercial and mixed use typologies.</p>
-        </div>
-      </li>
-      <li class="services-list__item reveal">
-        <span class="services-list__num">05</span>
-        <div class="services-list__body">
+        </article>
+        <article class="orbit-panel" id="orbit-panel-05" role="tabpanel">
           <h3>Design Communication</h3>
           <p>Clear visual packages that organize concept, atmosphere and project intent for confident presentations.</p>
-        </div>
-      </li>
-    </ol>
-    <p class="services-list__prompt reveal">
-      Have something else in mind?
-      <a href="/contact/" class="text-link">Tell us about your project ↗</a>
-    </p>
-  </div>
-</section>
-
-<!-- ── CTA BAND ─────────────────────────────────── -->
-<section class="cta-band">
-  <div class="wrap reveal">
-    <div class="orb orb--glow"></div>
-    <h2>Ready to render your vision?</h2>
-    <p>Cost-effective, time-efficient, and transparent from the first conversation.</p>
-    <a href="/contact/" class="btn btn--solid">Start a project <span class="arr">↗</span></a>
+        </article>
+      </div>
+      <p class="orbit-prompt">
+        Have something else in mind?
+        <a href="/contact/" class="text-link">Tell us about your project ↗</a>
+      </p>
+    </div>
   </div>
 </section>
 

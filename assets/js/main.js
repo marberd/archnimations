@@ -155,6 +155,48 @@ if (catBtns.length) {
   });
 }
 
+// ─── ORBIT SERVICES (constellation tabs) ─────────────
+const orbit = document.querySelector('.orbit-services');
+if (orbit) {
+  const nodes = [...orbit.querySelectorAll('.orbit-node')];
+  const panels = [...orbit.querySelectorAll('.orbit-panel')];
+  let idx = Math.max(0, nodes.findIndex(n => n.classList.contains('is-active')));
+  let timer = null;
+  let paused = false;
+  const INTERVAL = 4200;
+
+  const activate = (i) => {
+    idx = (i + nodes.length) % nodes.length;
+    nodes.forEach((n, ni) => {
+      const on = ni === idx;
+      n.classList.toggle('is-active', on);
+      const btn = n.querySelector('button');
+      if (btn) btn.setAttribute('aria-selected', String(on));
+    });
+    panels.forEach((p, pi) => p.classList.toggle('is-active', pi === idx));
+  };
+
+  const tick = () => { if (!paused) activate(idx + 1); };
+  const start = () => { if (timer) return; timer = setInterval(tick, INTERVAL); };
+  const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+
+  nodes.forEach((n, i) => {
+    const btn = n.querySelector('button');
+    if (!btn) return;
+    btn.addEventListener('click', () => { activate(i); stop(); start(); });
+  });
+
+  orbit.addEventListener('mouseenter', () => { paused = true; });
+  orbit.addEventListener('mouseleave', () => { paused = false; });
+  orbit.addEventListener('focusin', () => { paused = true; });
+  orbit.addEventListener('focusout', () => { paused = false; });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting ? start() : stop());
+  }, { threshold: 0.25 });
+  io.observe(orbit);
+}
+
 // ─── PACKAGE ACCORDION + VIEWER ──────────────────────
 const packageDetails = document.querySelectorAll('details.package-card');
 if (packageDetails.length) {

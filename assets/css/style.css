@@ -695,69 +695,139 @@ section { position: relative; z-index: 1; }
 }
 .stat__label { color: var(--text-mid); font-size: 0.9rem; margin-top: 6px; }
 
-/* ── SERVICES LIST (editorial directory) ──────────── */
-.services-list {
+/* ── ORBIT SERVICES (constellation tabs) ──────────── */
+.orbit-services {
+  margin-top: 36px;
+  display: grid;
+  gap: clamp(40px, 5vw, 68px);
+}
+.orbit-track {
   list-style: none;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
+  padding: clamp(24px, 4vw, 36px) 0 clamp(12px, 2vw, 18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(18px, 4vw, 62px);
+  flex-wrap: wrap;
 }
-.services-list__item {
+.orbit-node {
+  --y: 0px;
+  position: relative;
+  animation: orbitBob 6s ease-in-out infinite;
+}
+.orbit-node:nth-child(1) { --y:  8px; animation-delay: 0s; }
+.orbit-node:nth-child(2) { --y: -10px; animation-delay: 0.5s; }
+.orbit-node:nth-child(3) { --y:  4px; animation-delay: 1s; }
+.orbit-node:nth-child(4) { --y: -14px; animation-delay: 1.5s; }
+.orbit-node:nth-child(5) { --y:  6px; animation-delay: 2s; }
+@keyframes orbitBob {
+  0%, 100% { transform: translateY(var(--y)); }
+  50%      { transform: translateY(calc(var(--y) - 7px)); }
+}
+.orbit-node button {
   display: grid;
-  grid-template-columns: clamp(56px, 7vw, 92px) 1fr;
-  align-items: baseline;
-  column-gap: clamp(20px, 4vw, 56px);
-  padding: clamp(26px, 4vw, 42px) 0;
-  border-bottom: 1px solid var(--line);
-  transition: padding 0.4s var(--ease);
-}
-.services-list__num {
+  place-items: center;
+  width: clamp(74px, 8.2vw, 112px);
+  height: clamp(74px, 8.2vw, 112px);
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  letter-spacing: 0.18em;
-  color: var(--text-dim);
-  font-variant-numeric: tabular-nums;
-  align-self: start;
-  padding-top: 0.45em;
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  letter-spacing: 0.22em;
+  color: var(--text-mid);
+  transition: transform 0.55s var(--ease), border-color 0.4s, color 0.4s, box-shadow 0.55s var(--ease), background 0.55s var(--ease);
 }
-.services-list__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  column-gap: clamp(22px, 3.6vw, 56px);
-  align-items: baseline;
+.orbit-node button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.32);
 }
-.services-list__body h3 {
-  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+.orbit-node button:hover {
+  color: var(--text);
+  border-color: var(--text-mid);
+  transform: translateY(-4px) scale(1.04);
+}
+.orbit-node.is-active button {
+  color: #fff;
+  border-color: transparent;
+  background-image: var(--grad);
+  background-size: 220% 220%;
+  background-position: 0% 50%;
+  transform: scale(1.22);
+  box-shadow:
+    0 0 0 8px rgba(139,92,246,0.10),
+    0 24px 56px rgba(139,92,246,0.36);
+  animation: orbitGlow 7s var(--ease) infinite;
+}
+@keyframes orbitGlow {
+  0%, 100% { background-position: 0% 50%; box-shadow: 0 0 0 8px rgba(139,92,246,0.10), 0 24px 56px rgba(139,92,246,0.36); }
+  50%      { background-position: 100% 50%; box-shadow: 0 0 0 12px rgba(6,182,212,0.08), 0 28px 60px rgba(6,182,212,0.30); }
+}
+.orbit-stage {
+  position: relative;
+  min-height: clamp(150px, 18vw, 200px);
+  text-align: center;
+  padding: 0 clamp(0px, 4vw, 24px);
+}
+.orbit-panel {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  pointer-events: none;
+}
+.orbit-panel.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.orbit-panel h3 {
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
+  font-size: clamp(1.7rem, 3.3vw, 2.6rem);
   letter-spacing: -0.02em;
   color: var(--text);
-  margin: 0;
-  transition: color 0.35s var(--ease);
+  margin: 0 auto 14px;
+  max-width: 24ch;
 }
-.services-list__body p {
-  margin: 0;
+.orbit-panel p {
   color: var(--text-mid);
-  font-size: clamp(0.96rem, 1.1vw, 1.04rem);
-  max-width: 46ch;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  margin: 0 auto;
+  max-width: 56ch;
 }
-.services-list__item:hover { padding-left: clamp(8px, 1.4vw, 16px); }
-.services-list__item:hover .services-list__body h3 {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.services-list__item:hover .services-list__num { color: var(--text-mid); }
-.services-list__prompt {
-  margin: clamp(28px, 4vw, 42px) 0 0;
+.orbit-prompt {
+  text-align: center;
+  margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
   color: var(--text-mid);
 }
-.services-list__prompt a { margin-left: 10px; }
+.orbit-prompt a { margin-left: 10px; }
 .text-link { color: var(--iris-2); }
 .btn--spaced { margin-top: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-node { animation: none !important; transform: translateY(var(--y)); }
+  .orbit-node.is-active button { animation: none !important; }
+}
+@media (max-width: 560px) {
+  .orbit-track { gap: 14px; padding-top: 16px; }
+  .orbit-node { animation: none; transform: none; --y: 0; }
+  .orbit-node button { width: 64px; height: 64px; font-size: 0.78rem; }
+  .orbit-node.is-active button { transform: scale(1.14); }
+  .orbit-panel h3 { font-size: 1.5rem; }
+  .orbit-stage { min-height: 180px; }
+}
 
 /* ── WORK / GALLERY GRID ──────────────────────────── */
 .cat-nav { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
@@ -1412,14 +1482,6 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
     width: min(260px, 100%);
     min-height: 168px;
   }
-  .services-list__item {
-    grid-template-columns: 44px 1fr;
-    column-gap: 18px;
-    padding: 24px 0;
-  }
-  .services-list__body { grid-template-columns: 1fr; row-gap: 10px; }
-  .services-list__body h3 { font-size: 1.35rem; }
-  .services-list__item:hover { padding-left: 0; }
   .about-hero {
     grid-template-columns: 1fr;
     margin-bottom: 48px;
