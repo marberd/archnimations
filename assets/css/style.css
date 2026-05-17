@@ -996,6 +996,48 @@ section { position: relative; z-index: 1; }
   font-weight: 600;
 }
 
+/* ── CREDENTIALS (about page) ─────────────────────── */
+.credentials .section-head { margin-bottom: 44px; }
+.credentials .stats { margin-bottom: 64px; }
+.creds-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+}
+.creds-col .eyebrow { display: block; margin-bottom: 22px; }
+.creds-list, .creds-awards { list-style: none; }
+.creds-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.creds-list li:first-child { padding-top: 0; }
+.creds-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.creds-awards li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.creds-awards li:first-child { padding-top: 0; }
+.creds-awards li:last-child { border-bottom: 0; padding-bottom: 0; }
+.creds-awards strong {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.creds-awards span {
+  display: block;
+  color: var(--text-mid);
+  font-size: 0.92rem;
+}
+
 /* ── CHECK LIST ───────────────────────────────────── */
 .ticks { list-style: none; margin-top: 8px; }
 .ticks li { position: relative; padding-left: 30px; margin-bottom: 14px; color: var(--text-mid); }
@@ -1335,6 +1377,8 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   .page-head--contact { padding-top: 96px; padding-bottom: 32px; }
   .page-head--about { padding-top: 100px; padding-bottom: 40px; }
   .page-head--about .about-hero { margin-bottom: 36px; }
+  .creds-grid { grid-template-columns: 1fr; gap: 44px; }
+  .credentials .stats { margin-bottom: 44px; }
   .split--rev .split__media { order: 0; }
 }
 @media (max-width: 560px) {
