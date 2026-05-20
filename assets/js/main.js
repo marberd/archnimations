@@ -7,6 +7,12 @@ if (intro && document.documentElement.classList.contains('intro-pending')) {
   const introGlow = intro.querySelector('.intro__glow');
   const navLogo = document.querySelector('#nav .brand img');
 
+  // mobile gets half the intro duration
+  const fast = matchMedia('(max-width: 560px)').matches;
+  const holdMs = fast ? 1450 : 2900;
+  const flySec = fast ? 0.5 : 1;
+  const landMs = fast ? 525 : 1050;
+
   // after the reveal + hold, fly the logo up into the nav's center slot
   setTimeout(() => {
     const from = introLogo.getBoundingClientRect();
@@ -20,7 +26,7 @@ if (intro && document.documentElement.classList.contains('intro-pending')) {
     introLogo.style.opacity = '1';
     introLogo.style.transform = 'none';
     void introLogo.offsetWidth;
-    introLogo.style.transition = 'transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+    introLogo.style.transition = `transform ${flySec}s cubic-bezier(0.16, 1, 0.3, 1)`;
     introLogo.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
 
     if (introGlow) {
@@ -36,8 +42,8 @@ if (intro && document.documentElement.classList.contains('intro-pending')) {
       document.documentElement.classList.remove('intro-pending');
       document.body.style.overflow = '';
       intro.remove();
-    }, 1050);
-  }, 2900);
+    }, landMs);
+  }, holdMs);
 }
 
 // ─── HERO WORD ROTATOR ───────────────────────────────
@@ -159,57 +165,36 @@ if (catBtns.length) {
 const pano = document.querySelector('[data-pano]');
 if (pano) {
   const section = pano.closest('.pano') || pano;
-  const RANGE_X = 220;
-  const RANGE_Y = 80;
   const EASE = 0.22;
-  let targetX = 0, targetY = 0;
-  let currentX = 0, currentY = 0;
+  let tx = 50, ty = 50;
+  let cx = 50, cy = 50;
   let raf = null;
-  let active = false;
-
-  const setVars = () => {
-    section.style.setProperty('--pano-x', currentX.toFixed(2) + 'px');
-    section.style.setProperty('--pano-y', currentY.toFixed(2) + 'px');
-  };
 
   const tick = () => {
-    currentX += (targetX - currentX) * EASE;
-    currentY += (targetY - currentY) * EASE;
-    setVars();
-    if (active || Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+    cx += (tx - cx) * EASE;
+    cy += (ty - cy) * EASE;
+    section.style.setProperty('--pano-px', cx.toFixed(2) + '%');
+    section.style.setProperty('--pano-py', cy.toFixed(2) + '%');
+    if (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) {
       raf = requestAnimationFrame(tick);
     } else {
       raf = null;
     }
   };
-  const startLoop = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
 
-  const onMove = (e) => {
+  pano.addEventListener('mousemove', (e) => {
     const rect = pano.getBoundingClientRect();
-    const nx = (e.clientX - rect.left) / rect.width - 0.5;
-    const ny = (e.clientY - rect.top) / rect.height - 0.5;
-    targetX = -nx * RANGE_X * 2;
-    targetY = -ny * RANGE_Y * 2;
+    tx = ((e.clientX - rect.left) / rect.width) * 100;
+    ty = ((e.clientY - rect.top) / rect.height) * 100;
     section.classList.add('is-tracking');
-    startLoop();
-  };
-  const onLeave = () => {
-    targetX = 0;
-    targetY = 0;
+    kick();
+  }, { passive: true });
+  pano.addEventListener('mouseleave', () => {
+    tx = 50; ty = 50;
     section.classList.remove('is-tracking');
-    startLoop();
-  };
-
-  pano.addEventListener('mousemove', onMove, { passive: true });
-  pano.addEventListener('mouseleave', onLeave);
-
-  const pio = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      active = e.isIntersecting;
-      if (active) startLoop();
-    });
-  }, { threshold: 0.05 });
-  pio.observe(pano);
+    kick();
+  });
 }
 
 // ─── VALUES ROTATOR (about hero) ─────────────────────
