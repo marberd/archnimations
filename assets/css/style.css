@@ -1628,7 +1628,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   #burger { z-index: 101; }
   #nav .brand img { height: 38px; }
   #nav.scrolled .brand img { height: 34px; }
-  .metric-strip { margin-top: -54px; padding-bottom: 70px; }
+  .metric-strip { margin-top: -78px; padding-bottom: 70px; }
   .services-intro {
     grid-template-columns: 1fr;
   }
@@ -1667,10 +1667,16 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
     gap: 16px;
   }
   .page-head--contact { padding-top: 96px; padding-bottom: 32px; }
-  .page-head--about { padding-top: 132px; padding-bottom: 40px; }
+  .page-head--about { padding-top: 152px; padding-bottom: 40px; }
   .page-head--about .about-hero { margin-bottom: 36px; }
   .package-thumb { width: 56px; height: 56px; }
   .package-viewer__main { aspect-ratio: 4 / 3; }
+  /* Mobile perf: freeze + lighten the page-wide ambient orbs. A 120px blur
+     on two constantly-animating fixed layers is the heaviest non-Spline GPU
+     cost on phones; frozen and halved they stay ambient but nearly free. */
+  body::before, body::after { filter: blur(55px); opacity: 0.42; animation: none; }
+  /* Lighter nav glass — backdrop-blur is re-evaluated on every scroll frame. */
+  #nav.scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 }
 @media (max-width: 560px) {
   .wrap, #nav { padding-left: 20px; padding-right: 20px; }
@@ -1708,7 +1714,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
   .metric-card { padding: 14px 13px; border-radius: 14px; }
   .metric-card__num { font-size: clamp(1.4rem, 7vw, 2rem); }
   .metric-card__label { font-size: 0.72rem; margin-top: 5px; }
-  .metric-strip { margin-top: -42px; padding-bottom: 24px; }
+  .metric-strip { margin-top: -66px; padding-bottom: 24px; }
   .gallery { grid-template-columns: 1fr; }
   .cta-band .wrap { padding: 60px 24px; }
 }
