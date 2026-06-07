@@ -1667,7 +1667,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
     gap: 16px;
   }
   .page-head--contact { padding-top: 96px; padding-bottom: 32px; }
-  .page-head--about { padding-top: 152px; padding-bottom: 40px; }
+  .page-head--about { padding-top: 182px; padding-bottom: 40px; }
   .page-head--about .about-hero { margin-bottom: 36px; }
   .package-thumb { width: 56px; height: 56px; }
   .package-viewer__main { aspect-ratio: 4 / 3; }
