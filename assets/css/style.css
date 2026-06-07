@@ -1294,12 +1294,12 @@ section { position: relative; z-index: 1; }
 .cta-band .btn { position: relative; z-index: 1; }
 
 /* ── CONTACT (glass cards) ────────────────────────── */
-.page-head--about { padding-top: 110px; padding-bottom: 40px; }
+.about-page .section-pad.page-head--about { padding-top: 110px; padding-bottom: 40px; }
 .page-head--about .about-hero { margin-bottom: 36px; }
 .page-head--about .split { margin-top: 12px; }
 
-/* About page tighter section rhythm */
-.about-page .section-pad { padding-top: 36px; padding-bottom: 36px; }
+/* About page tighter section rhythm (does not apply to the hero section) */
+.about-page .section-pad:not(.page-head--about) { padding-top: 36px; padding-bottom: 36px; }
 .about-page .section-pad--flush { padding-top: 0; }
 .about-page .section-head { margin-bottom: 28px; }
 .about-page .cta-band { padding: 56px 0 64px; }
@@ -1667,7 +1667,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
     gap: 16px;
   }
   .page-head--contact { padding-top: 96px; padding-bottom: 32px; }
-  .page-head--about { padding-top: 182px; padding-bottom: 40px; }
+  .about-page .section-pad.page-head--about { padding-top: 182px; padding-bottom: 40px; }
   .page-head--about .about-hero { margin-bottom: 36px; }
   .package-thumb { width: 56px; height: 56px; }
   .package-viewer__main { aspect-ratio: 4 / 3; }
@@ -1681,7 +1681,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 40px; position: rela
 @media (max-width: 560px) {
   .wrap, #nav { padding-left: 20px; padding-right: 20px; }
   .section-pad { padding: 80px 0; }
-  .page-head--about { padding-top: 182px; padding-bottom: 40px; }
+  .about-page .section-pad.page-head--about { padding-top: 182px; padding-bottom: 40px; }
   .intro__logo { animation-duration: 0.6s; }
   .intro__glow { animation-duration: 1.05s; }
   .micro-projects {
