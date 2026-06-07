@@ -195,6 +195,78 @@ if (pano) {
     section.classList.remove('is-tracking');
     kick();
   });
+
+  // ─── Device-tilt parallax (mobile immersion) ────────
+  // On phones, "look around" the panorama as the user tilts the device.
+  // gamma = left/right tilt (deg), beta = front/back tilt (deg).
+  const isTouch = matchMedia('(hover: none)').matches;
+  if (isTouch) {
+    const X_SENS = 18;   // deg of gamma for full left↔right sweep
+    const Y_SENS = 22;   // deg of beta change for full top↔bottom sweep
+    let baseGamma = null;
+    let baseBeta = null;
+    let tiltOn = false;
+    let inView = true;
+
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+    const onOrient = (e) => {
+      if (e.gamma == null || e.beta == null || !inView) return;
+      if (baseGamma == null) { baseGamma = e.gamma; baseBeta = e.beta; }
+      // Map tilt deltas into 0–100% with mild clamping
+      const dx = clamp((e.gamma - baseGamma) / X_SENS, -1, 1);
+      const dy = clamp((e.beta  - baseBeta)  / Y_SENS, -1, 1);
+      tx = 50 + dx * 50;
+      ty = 50 + dy * 50;
+      section.classList.add('is-tracking');
+      kick();
+    };
+
+    const attach = () => {
+      if (tiltOn) return;
+      tiltOn = true;
+      window.addEventListener('deviceorientation', onOrient, { passive: true });
+    };
+
+    // iOS 13+ requires explicit permission triggered by a user gesture.
+    const needsPermission =
+      typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof DeviceOrientationEvent.requestPermission === 'function';
+
+    if (needsPermission) {
+      const requestOnce = () => {
+        DeviceOrientationEvent.requestPermission()
+          .then((state) => { if (state === 'granted') attach(); })
+          .catch(() => {});
+        pano.removeEventListener('touchstart', requestOnce);
+        pano.removeEventListener('click', requestOnce);
+      };
+      pano.addEventListener('touchstart', requestOnce, { passive: true, once: true });
+      pano.addEventListener('click', requestOnce, { once: true });
+    } else {
+      attach();
+    }
+
+    // Pause when off-screen so we don't churn the RAF loop in background.
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          inView = entry.isIntersecting;
+          if (!inView) {
+            tx = 50; ty = 50;
+            section.classList.remove('is-tracking');
+            kick();
+          }
+        });
+      }, { threshold: 0.15 });
+      io.observe(section);
+    }
+
+    // Recalibrate baseline when orientation flips (portrait ↔ landscape).
+    window.addEventListener('orientationchange', () => {
+      baseGamma = null; baseBeta = null;
+    });
+  }
 }
 
 // ─── VALUES ROTATOR (about hero) ─────────────────────
