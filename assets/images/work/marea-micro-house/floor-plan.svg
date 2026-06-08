@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <pattern id="poche" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#101218" stroke-width="1.2"/>
+    </pattern>
+    <pattern id="concrete" patternUnits="userSpaceOnUse" width="14" height="14">
+      <rect width="14" height="14" fill="#F1EDE5"/>
+      <circle cx="3" cy="4" r="0.7" fill="#A39B86"/>
+      <circle cx="9" cy="2" r="0.5" fill="#A39B86"/>
+      <circle cx="11" cy="9" r="0.8" fill="#A39B86"/>
+      <circle cx="5" cy="11" r="0.5" fill="#A39B86"/>
+      <circle cx="2" cy="13" r="0.4" fill="#A39B86"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,2 L9,5 L0,8 z" fill="#101218"/>
+    </marker>
+    <marker id="dim-tick" viewBox="-1 -6 2 12" markerWidth="2" markerHeight="12" orient="auto">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke="#101218" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Sheet -->
+  <rect width="1600" height="1200" fill="#F5F2EB"/>
+  <rect x="40" y="40" width="1520" height="1120" fill="none" stroke="#101218" stroke-width="2"/>
+  <rect x="52" y="52" width="1496" height="1096" fill="none" stroke="#101218" stroke-width="0.6"/>
+
+  <!-- Title strip top -->
+  <text x="80" y="100" fill="#101218" font-size="14" letter-spacing="6">ARCHNIMATIONS  /  RESIDENTIAL  /  MAREA MICRO-HOUSE  /  LAS GALERAS, SAMANÁ</text>
+  <line x1="80" y1="115" x2="1520" y2="115" stroke="#101218" stroke-width="0.6"/>
+  <text x="80" y="160" fill="#101218" font-size="34" font-weight="600" letter-spacing="2">FLOOR PLAN</text>
+  <text x="80" y="186" fill="#5b5a55" font-size="14" letter-spacing="3">SCALE 1:50  /  GROUND LEVEL  /  MEZZANINE SHOWN DASHED</text>
+
+  <!--
+    Drawing space:
+    Origin for plan: (260, 320) maps to NW exterior corner.
+    1 meter = 140 SVG units. House 5.00 x 4.00 m -> 700 x 560 plan rect.
+    But our plot is wider; mezzanine markers and dims extend beyond.
+  -->
+
+  <g transform="translate(360,360)">
+    <!-- Ground hatching just outside walls (lightest) -->
+    <rect x="-90" y="-90" width="880" height="740" fill="#EDE7DB"/>
+
+    <!-- Site ground texture / cliff edge (north top: ocean) -->
+    <g opacity="0.55">
+      <path d="M -90 -90 H 790 V -30 H -90 Z" fill="#E0E5E7"/>
+      <text x="350" y="-50" fill="#4a6a78" font-size="14" letter-spacing="6" text-anchor="middle">ATLANTIC OCEAN  ▲  N</text>
+    </g>
+
+    <!-- Concrete podium extending beyond walls -->
+    <rect x="-30" y="-30" width="760" height="620" fill="url(#concrete)" stroke="#101218" stroke-width="0.6"/>
+
+    <!-- Exterior walls (poché between two lines) -->
+    <!-- House box 700 x 560 (5m x 4m) -->
+    <rect x="0" y="0" width="700" height="560" fill="none" stroke="#101218" stroke-width="2"/>
+    <rect x="28" y="28" width="644" height="504" fill="none" stroke="#101218" stroke-width="1.3"/>
+
+    <!-- Wall poché fill -->
+    <path d="M0,0 H700 V560 H0 Z M28,28 V532 H672 V28 Z" fill="url(#poche)" fill-rule="evenodd"/>
+
+    <!-- North wall: full-height glazing (replace solid wall with mullion grid) -->
+    <rect x="60" y="0" width="580" height="28" fill="#F5F2EB"/>
+    <line x1="60" y1="0" x2="640" y2="0" stroke="#101218" stroke-width="2"/>
+    <line x1="60" y1="28" x2="640" y2="28" stroke="#101218" stroke-width="1.3"/>
+    <!-- Mullions -->
+    <g stroke="#101218" stroke-width="1">
+      <line x1="170" y1="0" x2="170" y2="28"/>
+      <line x1="280" y1="0" x2="280" y2="28"/>
+      <line x1="350" y1="0" x2="350" y2="28"/>
+      <line x1="420" y1="0" x2="420" y2="28"/>
+      <line x1="530" y1="0" x2="530" y2="28"/>
+    </g>
+    <line x1="60" y1="14" x2="640" y2="14" stroke="#101218" stroke-width="0.6"/>
+    <text x="350" y="-6" font-size="11" fill="#101218" text-anchor="middle" letter-spacing="2">CURTAIN-WALL GLAZING  6.00 m W × 4.20 m H</text>
+
+    <!-- South wall: entry door (single leaf, 0.9m wide) -->
+    <!-- Door opening from x=350 to x=420 in south wall (wall y=532..560) -->
+    <rect x="350" y="532" width="70" height="28" fill="#F5F2EB"/>
+    <!-- Door leaf -->
+    <line x1="350" y1="546" x2="350" y2="610" stroke="#101218" stroke-width="2"/>
+    <!-- Swing arc -->
+    <path d="M 350 610 A 64 64 0 0 1 414 546" fill="none" stroke="#101218" stroke-width="0.6" stroke-dasharray="3 3"/>
+    <text x="430" y="600" font-size="11" fill="#101218" letter-spacing="1">D-01  ENTRY  900</text>
+
+    <!-- Corten entry blade -->
+    <rect x="420" y="560" width="220" height="22" fill="#7F3A1E" stroke="#3C1809" stroke-width="0.6"/>
+    <text x="530" y="606" font-size="11" fill="#101218" text-anchor="middle" letter-spacing="2">CORTEN ENTRY BLADE</text>
+
+    <!-- BATHROOM POD (NE inside corner): interior wall at x=508 (vertical), and at y=210 (horizontal)
+         pod extends from x=508 to x=672 (right inner) and y=28 to y=210 -->
+    <!-- Pod walls -->
+    <rect x="500" y="28" width="14" height="182" fill="#101218"/>
+    <rect x="500" y="196" width="172" height="14" fill="#101218"/>
+    <!-- Bath door opening on south side of pod (gap in horiz wall) -->
+    <rect x="540" y="196" width="60" height="14" fill="#F5F2EB"/>
+    <line x1="540" y1="203" x2="600" y2="203" stroke="#101218" stroke-width="0.6"/>
+    <!-- Bath door leaf -->
+    <line x1="540" y1="203" x2="540" y2="263" stroke="#101218" stroke-width="1.5"/>
+    <path d="M 540 263 A 60 60 0 0 1 600 203" fill="none" stroke="#101218" stroke-width="0.5" stroke-dasharray="3 3"/>
+    <!-- Pod label -->
+    <text x="592" y="115" font-size="13" fill="#101218" text-anchor="middle" letter-spacing="3">BATH</text>
+    <text x="592" y="132" font-size="9.5" fill="#101218" text-anchor="middle">2.3 m²</text>
+    <!-- WC -->
+    <g transform="translate(520,40)" stroke="#101218" stroke-width="1" fill="none">
+      <rect x="0" y="0" width="34" height="22" rx="3"/>
+      <ellipse cx="17" cy="34" rx="14" ry="11"/>
+    </g>
+    <text x="540" y="80" font-size="8" fill="#101218" text-anchor="middle">WC</text>
+    <!-- Sink -->
+    <g transform="translate(625,40)" stroke="#101218" stroke-width="1" fill="none">
+      <rect x="0" y="0" width="38" height="22" rx="2"/>
+      <ellipse cx="19" cy="11" rx="13" ry="7"/>
+    </g>
+    <text x="644" y="80" font-size="8" fill="#101218" text-anchor="middle">SINK</text>
+    <!-- Shower -->
+    <g transform="translate(520,140)" stroke="#101218" stroke-width="1" fill="none">
+      <rect x="0" y="0" width="144" height="48"/>
+      <line x1="0" y1="0" x2="144" y2="48"/>
+      <line x1="144" y1="0" x2="0" y2="48"/>
+    </g>
+    <text x="592" y="170" font-size="8" fill="#101218" text-anchor="middle">SHOWER</text>
+
+    <!-- LADDER + MEZZANINE EDGE (above bath, shown dashed) -->
+    <rect x="500" y="28" width="172" height="182" fill="none" stroke="#101218" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <text x="586" y="60" font-size="10" fill="#101218" text-anchor="middle" letter-spacing="2" opacity="0.55">MEZZANINE OVER ↑</text>
+    <!-- Ladder -->
+    <g transform="translate(460,210)" stroke="#101218" stroke-width="1">
+      <line x1="0" y1="0" x2="0" y2="120"/>
+      <line x1="30" y1="0" x2="30" y2="120"/>
+      <line x1="0" y1="20" x2="30" y2="20"/>
+      <line x1="0" y1="40" x2="30" y2="40"/>
+      <line x1="0" y1="60" x2="30" y2="60"/>
+      <line x1="0" y1="80" x2="30" y2="80"/>
+      <line x1="0" y1="100" x2="30" y2="100"/>
+    </g>
+    <text x="475" y="350" font-size="9.5" fill="#101218" text-anchor="middle" letter-spacing="1">STEEL LADDER</text>
+    <text x="475" y="362" font-size="8.5" fill="#101218" text-anchor="middle">to mezzanine</text>
+
+    <!-- KITCHENETTE along west wall -->
+    <rect x="28" y="60" width="60" height="270" fill="#F0E9D8" stroke="#101218" stroke-width="0.8"/>
+    <line x1="28" y1="140" x2="88" y2="140" stroke="#101218" stroke-width="0.6"/>
+    <!-- Sink -->
+    <rect x="38" y="80" width="40" height="50" fill="none" stroke="#101218" stroke-width="0.8"/>
+    <circle cx="58" cy="105" r="4" fill="none" stroke="#101218" stroke-width="0.6"/>
+    <!-- Cooktop -->
+    <g stroke="#101218" stroke-width="0.6" fill="none">
+      <rect x="38" y="160" width="40" height="50"/>
+      <circle cx="49" cy="173" r="5"/>
+      <circle cx="67" cy="173" r="5"/>
+      <circle cx="49" cy="197" r="5"/>
+      <circle cx="67" cy="197" r="5"/>
+    </g>
+    <text x="58" y="306" font-size="9.5" fill="#101218" text-anchor="middle" letter-spacing="1">KITCHENETTE</text>
+
+    <!-- DAYBED / SOFA south-center -->
+    <g>
+      <rect x="120" y="380" width="280" height="120" rx="6" fill="#E6DEC6" stroke="#101218" stroke-width="0.9"/>
+      <rect x="120" y="380" width="280" height="22" rx="6" fill="#D9CFB4" stroke="#101218" stroke-width="0.6"/>
+      <rect x="120" y="400" width="40" height="100" fill="#D9CFB4" stroke="#101218" stroke-width="0.6"/>
+      <rect x="360" y="400" width="40" height="100" fill="#D9CFB4" stroke="#101218" stroke-width="0.6"/>
+      <text x="260" y="465" font-size="11" fill="#101218" text-anchor="middle" letter-spacing="3">DAYBED  /  SOFA</text>
+    </g>
+
+    <!-- READING NOOK near glass -->
+    <g>
+      <circle cx="140" cy="120" r="22" fill="none" stroke="#101218" stroke-width="0.9"/>
+      <text x="140" y="124" font-size="9" fill="#101218" text-anchor="middle">CHAIR</text>
+    </g>
+    <g>
+      <rect x="200" y="100" width="120" height="50" fill="none" stroke="#101218" stroke-width="0.9"/>
+      <text x="260" y="129" font-size="9" fill="#101218" text-anchor="middle" letter-spacing="2">LOW TABLE</text>
+    </g>
+
+    <!-- WORKDESK between kitchen and sofa -->
+    <g>
+      <rect x="28" y="380" width="60" height="120" fill="#F0E9D8" stroke="#101218" stroke-width="0.8"/>
+      <text x="58" y="445" font-size="9" fill="#101218" text-anchor="middle" letter-spacing="2">DESK</text>
+    </g>
+
+    <!-- Floor finish dashes (oak board direction) -->
+    <g opacity="0.18" stroke="#7a6a3a" stroke-width="0.5">
+      <line x1="30" y1="40" x2="498" y2="40"/>
+      <line x1="30" y1="60" x2="498" y2="60"/>
+      <line x1="30" y1="80" x2="120" y2="80"/>
+      <line x1="320" y1="80" x2="498" y2="80"/>
+      <line x1="30" y1="350" x2="670" y2="350"/>
+      <line x1="120" y1="370" x2="670" y2="370"/>
+      <line x1="30" y1="520" x2="670" y2="520"/>
+      <line x1="30" y1="500" x2="670" y2="500"/>
+      <line x1="30" y1="220" x2="430" y2="220"/>
+      <line x1="30" y1="260" x2="430" y2="260"/>
+    </g>
+
+    <!-- Room labels -->
+    <text x="270" y="245" font-size="18" fill="#101218" letter-spacing="6">LIVING · KITCHEN</text>
+    <text x="270" y="265" font-size="11" fill="#5b5a55" text-anchor="middle" letter-spacing="3">14.3 m² INTERIOR FLOOR</text>
+
+    <!-- North arrow -->
+    <g transform="translate(740,-50)">
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#101218" stroke-width="1"/>
+      <polygon points="0,-22 -8,8 0,2 8,8" fill="#101218"/>
+      <text x="0" y="40" font-size="12" fill="#101218" text-anchor="middle" letter-spacing="2">N</text>
+    </g>
+
+    <!-- Dimension lines - exterior  -->
+    <!-- top -->
+    <g stroke="#101218" stroke-width="0.8" fill="#101218">
+      <line x1="0" y1="-130" x2="700" y2="-130" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)"/>
+      <line x1="0" y1="-130" x2="0" y2="-10" stroke-dasharray="2 3" stroke-width="0.5"/>
+      <line x1="700" y1="-130" x2="700" y2="-10" stroke-dasharray="2 3" stroke-width="0.5"/>
+      <text x="350" y="-138" font-size="13" text-anchor="middle" letter-spacing="2">5 000</text>
+    </g>
+    <!-- right -->
+    <g stroke="#101218" stroke-width="0.8" fill="#101218">
+      <line x1="800" y1="0" x2="800" y2="560" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)"/>
+      <line x1="710" y1="0" x2="810" y2="0" stroke-dasharray="2 3" stroke-width="0.5"/>
+      <line x1="710" y1="560" x2="810" y2="560" stroke-dasharray="2 3" stroke-width="0.5"/>
+      <text x="820" y="285" font-size="13" letter-spacing="2">4 000</text>
+    </g>
+    <!-- interior partition (pod) -->
+    <g stroke="#101218" stroke-width="0.6" fill="#101218">
+      <line x1="500" y1="-95" x2="700" y2="-95" marker-start="url(#dim-tick)" marker-end="url(#dim-tick)"/>
+      <line x1="500" y1="-105" x2="500" y2="-10" stroke-dasharray="2 3" stroke-width="0.4"/>
+      <text x="600" y="-100" font-size="11" text-anchor="middle">1 400</text>
+    </g>
+
+    <!-- Drawing notes -->
+    <g transform="translate(0,640)">
+      <text x="0" y="0" font-size="11" fill="#101218" letter-spacing="2">GROSS FLOOR AREA</text>
+      <text x="180" y="0" font-size="11" fill="#101218" letter-spacing="1">20.0 m² (incl. mezzanine 3.4 m²)</text>
+      <text x="0" y="20" font-size="11" fill="#101218" letter-spacing="2">FOOTPRINT</text>
+      <text x="180" y="20" font-size="11" fill="#101218" letter-spacing="1">5 000 × 4 000 mm</text>
+      <text x="0" y="40" font-size="11" fill="#101218" letter-spacing="2">CEILING</text>
+      <text x="180" y="40" font-size="11" fill="#101218" letter-spacing="1">2 800 / 4 200 mm (mono-pitch toward sea)</text>
+      <text x="0" y="60" font-size="11" fill="#101218" letter-spacing="2">MATERIAL EXTERIOR</text>
+      <text x="180" y="60" font-size="11" fill="#101218" letter-spacing="1">charcoal cedar boards · Corten blade · standing-seam copper roof</text>
+      <text x="0" y="80" font-size="11" fill="#101218" letter-spacing="2">MATERIAL INTERIOR</text>
+      <text x="180" y="80" font-size="11" fill="#101218" letter-spacing="1">white-oiled oak floor · linen plaster walls · brass fittings</text>
+    </g>
+  </g>
+
+  <!-- Title block -->
+  <g transform="translate(1110,950)">
+    <rect x="0" y="0" width="410" height="170" fill="none" stroke="#101218" stroke-width="1"/>
+    <line x1="0" y1="34" x2="410" y2="34" stroke="#101218" stroke-width="0.6"/>
+    <line x1="0" y1="100" x2="410" y2="100" stroke="#101218" stroke-width="0.6"/>
+    <line x1="200" y1="34" x2="200" y2="170" stroke="#101218" stroke-width="0.6"/>
+    <text x="14" y="22" font-size="14" letter-spacing="4" fill="#101218">ARCHNIMATIONS</text>
+    <text x="14" y="56" font-size="10" letter-spacing="2" fill="#5b5a55">PROJECT</text>
+    <text x="14" y="76" font-size="13" letter-spacing="2" fill="#101218">MAREA MICRO-HOUSE</text>
+    <text x="14" y="90" font-size="10" letter-spacing="1" fill="#5b5a55">Las Galeras · Samaná</text>
+    <text x="14" y="122" font-size="10" letter-spacing="2" fill="#5b5a55">DRAWING</text>
+    <text x="14" y="138" font-size="12" letter-spacing="2" fill="#101218">A-101  FLOOR PLAN</text>
+    <text x="14" y="154" font-size="9" letter-spacing="1" fill="#5b5a55">Scale 1:50  ·  Sheet 1 / 3</text>
+    <text x="214" y="56" font-size="10" letter-spacing="2" fill="#5b5a55">DATE</text>
+    <text x="214" y="74" font-size="11" letter-spacing="1" fill="#101218">2026 · 06</text>
+    <text x="214" y="122" font-size="10" letter-spacing="2" fill="#5b5a55">CLIENT</text>
+    <text x="214" y="138" font-size="11" letter-spacing="1" fill="#101218">CONCEPT  /  STUDIO</text>
+    <text x="214" y="154" font-size="9" letter-spacing="1" fill="#5b5a55">Self-initiated micro typology</text>
+  </g>
+
+  <!-- Scale bar -->
+  <g transform="translate(80,1050)">
+    <rect x="0" y="0" width="40" height="10" fill="#101218"/>
+    <rect x="40" y="0" width="40" height="10" fill="#F5F2EB" stroke="#101218" stroke-width="1"/>
+    <rect x="80" y="0" width="40" height="10" fill="#101218"/>
+    <rect x="120" y="0" width="40" height="10" fill="#F5F2EB" stroke="#101218" stroke-width="1"/>
+    <rect x="160" y="0" width="40" height="10" fill="#101218"/>
+    <text x="0" y="34" font-size="10" letter-spacing="1">0</text>
+    <text x="76" y="34" font-size="10" letter-spacing="1">1 m</text>
+    <text x="156" y="34" font-size="10" letter-spacing="1">2 m</text>
+    <text x="0" y="-8" font-size="10" letter-spacing="2" fill="#5b5a55">SCALE</text>
+  </g>
+</svg>
